@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-slate-800;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+    font-family: "Sora", "Segoe UI", sans-serif;
+    background-image: radial-gradient(circle at top, rgba(6, 182, 212, 0.14), transparent 28%);
+  }
+
+  ::selection {
+    @apply bg-cyan-500/30 text-white;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-3xl border border-white/10 bg-slate-900/70 backdrop-blur-xl shadow-glow;
+  }
+
+  .panel-soft {
+    @apply rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-md;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(34, 211, 238, 0.35) transparent;
+  }
+}
