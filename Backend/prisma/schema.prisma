@@ -1,0 +1,144 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RolUsuario {
+  admin
+  empleado
+}
+
+enum TipoMovimiento {
+  entrada
+  salida
+}
+
+enum EstadoMesa {
+  libre
+  ocupada
+}
+
+enum EstadoCuenta {
+  abierta
+  cerrada
+}
+
+model Usuario {
+  id_usuario  Int        @id @default(autoincrement())
+  nombre      String     @db.VarChar(120)
+  usuario     String     @unique @db.VarChar(80)
+  contrasena  String     @map("contraseña") @db.VarChar(255)
+  rol         RolUsuario @default(empleado)
+  estado      Boolean    @default(true)
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
+  deleted_at  DateTime?
+  cuentas     Cuenta[]
+
+  @@map("usuarios")
+}
+
+model Categoria {
+  id_categoria     Int        @id @default(autoincrement())
+  nombre_categoria String     @unique @db.VarChar(120)
+  created_at       DateTime   @default(now())
+  updated_at       DateTime   @updatedAt
+  deleted_at       DateTime?
+  productos        Producto[]
+
+  @@map("categorias")
+}
+
+model Producto {
+  id_producto      Int                    @id @default(autoincrement())
+  nombre           String                 @unique @db.VarChar(150)
+  precio_venta     Decimal                @db.Decimal(10, 2)
+  stock            Int                    @default(0)
+  stock_minimo     Int                    @default(0)
+  id_categoria     Int
+  estado           Boolean                @default(true)
+  created_at       DateTime               @default(now())
+  updated_at       DateTime               @updatedAt
+  deleted_at       DateTime?
+  categoria        Categoria              @relation(fields: [id_categoria], references: [id_categoria], onDelete: Restrict)
+  movimientos      MovimientoInventario[]
+  detalles_cuenta  DetalleCuenta[]
+  imagenes         ProductoImagen[]
+
+  @@map("productos")
+}
+
+model ProductoImagen {
+  id_imagen   Int      @id @default(autoincrement())
+  url_imagen  String   @db.VarChar(255)
+  id_producto Int
+  created_at  DateTime @default(now())
+  producto    Producto @relation(fields: [id_producto], references: [id_producto], onDelete: Cascade)
+
+  @@map("producto_imagen")
+}
+
+model MovimientoInventario {
+  id_movimiento   Int            @id @default(autoincrement())
+  id_producto     Int
+  tipo_movimiento TipoMovimiento
+  cantidad        Int
+  fecha           DateTime       @default(now())
+  observacion     String?        @db.VarChar(255)
+  created_at      DateTime       @default(now())
+  updated_at      DateTime       @updatedAt
+  deleted_at      DateTime?
+  producto        Producto       @relation(fields: [id_producto], references: [id_producto], onDelete: Cascade)
+
+  @@map("movimientos_inventario")
+}
+
+model Mesa {
+  id_mesa      Int        @id @default(autoincrement())
+  numero_mesa  Int        @unique
+  estado       EstadoMesa @default(libre)
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+  deleted_at   DateTime?
+  cuentas      Cuenta[]
+
+  @@map("mesas")
+}
+
+model Cuenta {
+  id_cuenta       Int          @id @default(autoincrement())
+  id_mesa         Int
+  id_empleado     Int
+  fecha_apertura  DateTime     @default(now())
+  fecha_cierre    DateTime?
+  estado          EstadoCuenta @default(abierta)
+  total           Decimal      @default(0) @db.Decimal(10, 2)
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @updatedAt
+  deleted_at      DateTime?
+  mesa            Mesa         @relation(fields: [id_mesa], references: [id_mesa], onDelete: Restrict)
+  empleado        Usuario      @relation(fields: [id_empleado], references: [id_usuario], onDelete: Restrict)
+  detalles        DetalleCuenta[]
+
+  @@map("cuentas")
+}
+
+model DetalleCuenta {
+  id_detalle      Int      @id @default(autoincrement())
+  id_cuenta       Int
+  id_producto     Int
+  cantidad        Int
+  precio_unitario Decimal  @db.Decimal(10, 2)
+  subtotal        Decimal  @db.Decimal(10, 2)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  deleted_at      DateTime?
+  cuenta          Cuenta   @relation(fields: [id_cuenta], references: [id_cuenta], onDelete: Cascade)
+  producto        Producto @relation(fields: [id_producto], references: [id_producto], onDelete: Cascade)
+
+  @@map("detalle_cuenta")
+}
