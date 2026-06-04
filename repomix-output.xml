@@ -1,0 +1,5850 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+Backend/package.json
+Backend/prisma/migrations/.gitkeep
+Backend/prisma/migrations/20260524231046_init/migration.sql
+Backend/prisma/migrations/20260525005518_add_product_images_and_admin_deletes/migration.sql
+Backend/prisma/migrations/migration_lock.toml
+Backend/prisma/schema.prisma
+Backend/README.md
+Backend/src/app.js
+Backend/src/config/database.js
+Backend/src/controllers/auth.controller.js
+Backend/src/controllers/categorias.controller.js
+Backend/src/controllers/cuentas.controller.js
+Backend/src/controllers/detalleCuenta.controller.js
+Backend/src/controllers/mesas.controller.js
+Backend/src/controllers/movimientos.controller.js
+Backend/src/controllers/productoImagen.controller.js
+Backend/src/controllers/productos.controller.js
+Backend/src/controllers/usuarios.controller.js
+Backend/src/middlewares/auth.middleware.js
+Backend/src/middlewares/error.middleware.js
+Backend/src/middlewares/role.middleware.js
+Backend/src/middlewares/upload.middleware.js
+Backend/src/routes/auth.routes.js
+Backend/src/routes/categorias.routes.js
+Backend/src/routes/cuentas.routes.js
+Backend/src/routes/detalleCuenta.routes.js
+Backend/src/routes/mesas.routes.js
+Backend/src/routes/movimientos.routes.js
+Backend/src/routes/productos.routes.js
+Backend/src/routes/usuarios.routes.js
+Backend/src/server.js
+Backend/src/services/auth.service.js
+Backend/src/services/inventory.service.js
+Backend/src/utils/appError.js
+Backend/src/utils/asyncHandler.js
+Backend/src/utils/response.js
+Backend/src/utils/sanitize.js
+Backend/uploads/productos/1779671325829-obito.png
+Backend/uploads/productos/1779671535063-minato.jpg
+Backend/uploads/productos/1779671577839-sharingan.png
+Frontend/index.html
+Frontend/package.json
+Frontend/postcss.config.js
+Frontend/public/favicon.ico
+Frontend/public/index.html
+Frontend/public/logo192.png
+Frontend/public/logo512.png
+Frontend/public/manifest.json
+Frontend/public/robots.txt
+Frontend/README.md
+Frontend/src/api/axios.js
+Frontend/src/App.jsx
+Frontend/src/assets/.gitkeep
+Frontend/src/components/charts/SalesOverviewChart.jsx
+Frontend/src/components/charts/StatusPieChart.jsx
+Frontend/src/components/layout/DashboardLayout.jsx
+Frontend/src/components/layout/Navbar.jsx
+Frontend/src/components/layout/Sidebar.jsx
+Frontend/src/components/ui/Button.jsx
+Frontend/src/components/ui/Card.jsx
+Frontend/src/components/ui/ConfirmModal.jsx
+Frontend/src/components/ui/Input.jsx
+Frontend/src/components/ui/Loader.jsx
+Frontend/src/components/ui/Modal.jsx
+Frontend/src/components/ui/Table.jsx
+Frontend/src/context/AuthContext.jsx
+Frontend/src/hooks/useAsyncAction.js
+Frontend/src/index.css
+Frontend/src/main.jsx
+Frontend/src/pages/auth/Login.jsx
+Frontend/src/pages/categorias/Categorias.jsx
+Frontend/src/pages/cuentas/Cuentas.jsx
+Frontend/src/pages/dashboard/Dashboard.jsx
+Frontend/src/pages/mesas/Mesas.jsx
+Frontend/src/pages/productos/Productos.jsx
+Frontend/src/pages/reportes/Reportes.jsx
+Frontend/src/pages/ventas/Ventas.jsx
+Frontend/src/routes/AppRoutes.jsx
+Frontend/src/routes/ProtectedRoute.jsx
+Frontend/src/services/auth.service.js
+Frontend/src/services/categorias.service.js
+Frontend/src/services/cuentas.service.js
+Frontend/src/services/dashboard.service.js
+Frontend/src/services/mesas.service.js
+Frontend/src/services/productos.service.js
+Frontend/src/services/reportes.service.js
+Frontend/src/styles/.gitkeep
+Frontend/tailwind.config.js
+Frontend/vite.config.mjs
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+node_modules
+.env
+coverage
+dist
+.DS_Store
+*.log
+</file>
+
+<file path="Backend/package.json">
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend profesional para sistema de inventario de bar/restaurante",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "postgresql",
+    "prisma",
+    "inventory"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "prisma": "^6.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
+</file>
+
+<file path="Backend/prisma/migrations/.gitkeep">
+
+</file>
+
+<file path="Backend/prisma/migrations/20260524231046_init/migration.sql">
+-- CreateEnum
+CREATE TYPE "RolUsuario" AS ENUM ('admin', 'empleado');
+
+-- CreateEnum
+CREATE TYPE "TipoMovimiento" AS ENUM ('entrada', 'salida');
+
+-- CreateEnum
+CREATE TYPE "EstadoMesa" AS ENUM ('libre', 'ocupada');
+
+-- CreateEnum
+CREATE TYPE "EstadoCuenta" AS ENUM ('abierta', 'cerrada');
+
+-- CreateTable
+CREATE TABLE "usuarios" (
+    "id_usuario" SERIAL NOT NULL,
+    "nombre" VARCHAR(120) NOT NULL,
+    "usuario" VARCHAR(80) NOT NULL,
+    "contraseña" VARCHAR(255) NOT NULL,
+    "rol" "RolUsuario" NOT NULL DEFAULT 'empleado',
+    "estado" BOOLEAN NOT NULL DEFAULT true,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+    "deleted_at" TIMESTAMP(3),
+
+    CONSTRAINT "usuarios_pkey" PRIMARY KEY ("id_usuario")
+);
+
+-- CreateTable
+CREATE TABLE "categorias" (
+    "id_categoria" SERIAL NOT NULL,
+    "nombre_categoria" VARCHAR(120) NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+    "deleted_at" TIMESTAMP(3),
+
+    CONSTRAINT "categorias_pkey" PRIMARY KEY ("id_categoria")
+);
+
+-- CreateTable
+CREATE TABLE "productos" (
+    "id_producto" SERIAL NOT NULL,
+    "nombre" VARCHAR(150) NOT NULL,
+    "precio_venta" DECIMAL(10,2) NOT NULL,
+    "stock" INTEGER NOT NULL DEFAULT 0,
+    "stock_minimo" INTEGER NOT NULL DEFAULT 0,
+    "id_categoria" INTEGER NOT NULL,
+    "estado" BOOLEAN NOT NULL DEFAULT true,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+    "deleted_at" TIMESTAMP(3),
+
+    CONSTRAINT "productos_pkey" PRIMARY KEY ("id_producto")
+);
+
+-- CreateTable
+CREATE TABLE "movimientos_inventario" (
+    "id_movimiento" SERIAL NOT NULL,
+    "id_producto" INTEGER NOT NULL,
+    "tipo_movimiento" "TipoMovimiento" NOT NULL,
+    "cantidad" INTEGER NOT NULL,
+    "fecha" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "observacion" VARCHAR(255),
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+    "deleted_at" TIMESTAMP(3),
+
+    CONSTRAINT "movimientos_inventario_pkey" PRIMARY KEY ("id_movimiento")
+);
+
+-- CreateTable
+CREATE TABLE "mesas" (
+    "id_mesa" SERIAL NOT NULL,
+    "numero_mesa" INTEGER NOT NULL,
+    "estado" "EstadoMesa" NOT NULL DEFAULT 'libre',
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+    "deleted_at" TIMESTAMP(3),
+
+    CONSTRAINT "mesas_pkey" PRIMARY KEY ("id_mesa")
+);
+
+-- CreateTable
+CREATE TABLE "cuentas" (
+    "id_cuenta" SERIAL NOT NULL,
+    "id_mesa" INTEGER NOT NULL,
+    "id_empleado" INTEGER NOT NULL,
+    "fecha_apertura" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "fecha_cierre" TIMESTAMP(3),
+    "estado" "EstadoCuenta" NOT NULL DEFAULT 'abierta',
+    "total" DECIMAL(10,2) NOT NULL DEFAULT 0,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+    "deleted_at" TIMESTAMP(3),
+
+    CONSTRAINT "cuentas_pkey" PRIMARY KEY ("id_cuenta")
+);
+
+-- CreateTable
+CREATE TABLE "detalle_cuenta" (
+    "id_detalle" SERIAL NOT NULL,
+    "id_cuenta" INTEGER NOT NULL,
+    "id_producto" INTEGER NOT NULL,
+    "cantidad" INTEGER NOT NULL,
+    "precio_unitario" DECIMAL(10,2) NOT NULL,
+    "subtotal" DECIMAL(10,2) NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+    "deleted_at" TIMESTAMP(3),
+
+    CONSTRAINT "detalle_cuenta_pkey" PRIMARY KEY ("id_detalle")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "usuarios_usuario_key" ON "usuarios"("usuario");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "categorias_nombre_categoria_key" ON "categorias"("nombre_categoria");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "productos_nombre_key" ON "productos"("nombre");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "mesas_numero_mesa_key" ON "mesas"("numero_mesa");
+
+-- AddForeignKey
+ALTER TABLE "productos" ADD CONSTRAINT "productos_id_categoria_fkey" FOREIGN KEY ("id_categoria") REFERENCES "categorias"("id_categoria") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "movimientos_inventario" ADD CONSTRAINT "movimientos_inventario_id_producto_fkey" FOREIGN KEY ("id_producto") REFERENCES "productos"("id_producto") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "cuentas" ADD CONSTRAINT "cuentas_id_mesa_fkey" FOREIGN KEY ("id_mesa") REFERENCES "mesas"("id_mesa") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "cuentas" ADD CONSTRAINT "cuentas_id_empleado_fkey" FOREIGN KEY ("id_empleado") REFERENCES "usuarios"("id_usuario") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "detalle_cuenta" ADD CONSTRAINT "detalle_cuenta_id_cuenta_fkey" FOREIGN KEY ("id_cuenta") REFERENCES "cuentas"("id_cuenta") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "detalle_cuenta" ADD CONSTRAINT "detalle_cuenta_id_producto_fkey" FOREIGN KEY ("id_producto") REFERENCES "productos"("id_producto") ON DELETE RESTRICT ON UPDATE CASCADE;
+</file>
+
+<file path="Backend/prisma/migrations/20260525005518_add_product_images_and_admin_deletes/migration.sql">
+-- DropForeignKey
+ALTER TABLE "detalle_cuenta" DROP CONSTRAINT "detalle_cuenta_id_cuenta_fkey";
+
+-- DropForeignKey
+ALTER TABLE "detalle_cuenta" DROP CONSTRAINT "detalle_cuenta_id_producto_fkey";
+
+-- DropForeignKey
+ALTER TABLE "movimientos_inventario" DROP CONSTRAINT "movimientos_inventario_id_producto_fkey";
+
+-- CreateTable
+CREATE TABLE "producto_imagen" (
+    "id_imagen" SERIAL NOT NULL,
+    "url_imagen" VARCHAR(255) NOT NULL,
+    "id_producto" INTEGER NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "producto_imagen_pkey" PRIMARY KEY ("id_imagen")
+);
+
+-- AddForeignKey
+ALTER TABLE "producto_imagen" ADD CONSTRAINT "producto_imagen_id_producto_fkey" FOREIGN KEY ("id_producto") REFERENCES "productos"("id_producto") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "movimientos_inventario" ADD CONSTRAINT "movimientos_inventario_id_producto_fkey" FOREIGN KEY ("id_producto") REFERENCES "productos"("id_producto") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "detalle_cuenta" ADD CONSTRAINT "detalle_cuenta_id_cuenta_fkey" FOREIGN KEY ("id_cuenta") REFERENCES "cuentas"("id_cuenta") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "detalle_cuenta" ADD CONSTRAINT "detalle_cuenta_id_producto_fkey" FOREIGN KEY ("id_producto") REFERENCES "productos"("id_producto") ON DELETE CASCADE ON UPDATE CASCADE;
+</file>
+
+<file path="Backend/prisma/migrations/migration_lock.toml">
+# Please do not edit this file manually
+# It should be added in your version-control system (e.g., Git)
+provider = "postgresql"
+</file>
+
+<file path="Backend/prisma/schema.prisma">
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RolUsuario {
+  admin
+  empleado
+}
+
+enum TipoMovimiento {
+  entrada
+  salida
+}
+
+enum EstadoMesa {
+  libre
+  ocupada
+}
+
+enum EstadoCuenta {
+  abierta
+  cerrada
+}
+
+model Usuario {
+  id_usuario  Int        @id @default(autoincrement())
+  nombre      String     @db.VarChar(120)
+  usuario     String     @unique @db.VarChar(80)
+  contrasena  String     @map("contraseña") @db.VarChar(255)
+  rol         RolUsuario @default(empleado)
+  estado      Boolean    @default(true)
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
+  deleted_at  DateTime?
+  cuentas     Cuenta[]
+
+  @@map("usuarios")
+}
+
+model Categoria {
+  id_categoria     Int        @id @default(autoincrement())
+  nombre_categoria String     @unique @db.VarChar(120)
+  created_at       DateTime   @default(now())
+  updated_at       DateTime   @updatedAt
+  deleted_at       DateTime?
+  productos        Producto[]
+
+  @@map("categorias")
+}
+
+model Producto {
+  id_producto      Int                    @id @default(autoincrement())
+  nombre           String                 @unique @db.VarChar(150)
+  precio_venta     Decimal                @db.Decimal(10, 2)
+  stock            Int                    @default(0)
+  stock_minimo     Int                    @default(0)
+  id_categoria     Int
+  estado           Boolean                @default(true)
+  created_at       DateTime               @default(now())
+  updated_at       DateTime               @updatedAt
+  deleted_at       DateTime?
+  categoria        Categoria              @relation(fields: [id_categoria], references: [id_categoria], onDelete: Restrict)
+  movimientos      MovimientoInventario[]
+  detalles_cuenta  DetalleCuenta[]
+  imagenes         ProductoImagen[]
+
+  @@map("productos")
+}
+
+model ProductoImagen {
+  id_imagen   Int      @id @default(autoincrement())
+  url_imagen  String   @db.VarChar(255)
+  id_producto Int
+  created_at  DateTime @default(now())
+  producto    Producto @relation(fields: [id_producto], references: [id_producto], onDelete: Cascade)
+
+  @@map("producto_imagen")
+}
+
+model MovimientoInventario {
+  id_movimiento   Int            @id @default(autoincrement())
+  id_producto     Int
+  tipo_movimiento TipoMovimiento
+  cantidad        Int
+  fecha           DateTime       @default(now())
+  observacion     String?        @db.VarChar(255)
+  created_at      DateTime       @default(now())
+  updated_at      DateTime       @updatedAt
+  deleted_at      DateTime?
+  producto        Producto       @relation(fields: [id_producto], references: [id_producto], onDelete: Cascade)
+
+  @@map("movimientos_inventario")
+}
+
+model Mesa {
+  id_mesa      Int        @id @default(autoincrement())
+  numero_mesa  Int        @unique
+  estado       EstadoMesa @default(libre)
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+  deleted_at   DateTime?
+  cuentas      Cuenta[]
+
+  @@map("mesas")
+}
+
+model Cuenta {
+  id_cuenta       Int          @id @default(autoincrement())
+  id_mesa         Int
+  id_empleado     Int
+  fecha_apertura  DateTime     @default(now())
+  fecha_cierre    DateTime?
+  estado          EstadoCuenta @default(abierta)
+  total           Decimal      @default(0) @db.Decimal(10, 2)
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @updatedAt
+  deleted_at      DateTime?
+  mesa            Mesa         @relation(fields: [id_mesa], references: [id_mesa], onDelete: Restrict)
+  empleado        Usuario      @relation(fields: [id_empleado], references: [id_usuario], onDelete: Restrict)
+  detalles        DetalleCuenta[]
+
+  @@map("cuentas")
+}
+
+model DetalleCuenta {
+  id_detalle      Int      @id @default(autoincrement())
+  id_cuenta       Int
+  id_producto     Int
+  cantidad        Int
+  precio_unitario Decimal  @db.Decimal(10, 2)
+  subtotal        Decimal  @db.Decimal(10, 2)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  deleted_at      DateTime?
+  cuenta          Cuenta   @relation(fields: [id_cuenta], references: [id_cuenta], onDelete: Cascade)
+  producto        Producto @relation(fields: [id_producto], references: [id_producto], onDelete: Cascade)
+
+  @@map("detalle_cuenta")
+}
+</file>
+
+<file path="Backend/src/app.js">
+require("dotenv").config();
+
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const authRoutes = require("./routes/auth.routes");
+const usuariosRoutes = require("./routes/usuarios.routes");
+const categoriasRoutes = require("./routes/categorias.routes");
+const productosRoutes = require("./routes/productos.routes");
+const movimientosRoutes = require("./routes/movimientos.routes");
+const mesasRoutes = require("./routes/mesas.routes");
+const cuentasRoutes = require("./routes/cuentas.routes");
+const detalleCuentaRoutes = require("./routes/detalleCuenta.routes");
+const errorMiddleware = require("./middlewares/error.middleware");
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "API del sistema de inventario operativa.",
+    data: null,
+  });
+});
+
+app.use("/api/auth", authRoutes);
+app.use("/api/usuarios", usuariosRoutes);
+app.use("/api/categorias", categoriasRoutes);
+app.use("/api/productos", productosRoutes);
+app.use("/api/movimientos", movimientosRoutes);
+app.use("/api/mesas", mesasRoutes);
+app.use("/api/cuentas", cuentasRoutes);
+app.use("/api/detalle-cuenta", detalleCuentaRoutes);
+
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Ruta no encontrada.",
+    data: null,
+  });
+});
+
+app.use(errorMiddleware);
+
+module.exports = app;
+</file>
+
+<file path="Backend/src/config/database.js">
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient({
+  log: process.env.NODE_ENV === "development" ? ["query", "warn", "error"] : ["error"],
+});
+
+module.exports = prisma;
+</file>
+
+<file path="Backend/src/controllers/auth.controller.js">
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sanitizeUsuario } = require("../utils/sanitize");
+
+const login = asyncHandler(async (req, res) => {
+  const { usuario } = req.body;
+  const contrasena = req.body.contrasena || req.body["contraseña"];
+
+  if (!usuario || !contrasena) {
+    throw new AppError("Usuario y contraseña son obligatorios.", 400);
+  }
+
+  const existingUser = await prisma.usuario.findFirst({
+    where: {
+      usuario: {
+        equals: usuario,
+        mode: "insensitive",
+      },
+      estado: true,
+      deleted_at: null,
+    },
+  });
+
+  if (!existingUser) {
+    throw new AppError("Credenciales inválidas.", 401);
+  }
+
+  let isMatch = false;
+
+  if (existingUser.contrasena?.startsWith("$2")) {
+    isMatch = await bcrypt.compare(contrasena, existingUser.contrasena);
+  } else {
+    isMatch = existingUser.contrasena === contrasena;
+
+    if (isMatch) {
+      const hashedPassword = await bcrypt.hash(contrasena, 10);
+
+      await prisma.usuario.update({
+        where: { id_usuario: existingUser.id_usuario },
+        data: { contrasena: hashedPassword },
+      });
+
+      existingUser.contrasena = hashedPassword;
+    }
+  }
+
+  if (!isMatch) {
+    throw new AppError("Credenciales inválidas.", 401);
+  }
+
+  const token = jwt.sign(
+    {
+      id_usuario: existingUser.id_usuario,
+      rol: existingUser.rol,
+      usuario: existingUser.usuario,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "8h" }
+  );
+
+  const safeUser = sanitizeUsuario(existingUser);
+
+  res.status(200).json({
+    success: true,
+    message: "Inicio de sesión exitoso.",
+    token,
+    user: safeUser,
+    data: {
+      token,
+      user: safeUser,
+      usuario: safeUser,
+    },
+  });
+});
+
+const profile = asyncHandler(async (req, res) => {
+  const usuario = await prisma.usuario.findUnique({
+    where: { id_usuario: req.user.id_usuario },
+  });
+
+  const safeUser = sanitizeUsuario(usuario);
+
+  res.status(200).json({
+    success: true,
+    message: "Perfil obtenido correctamente.",
+    user: safeUser,
+    data: safeUser,
+  });
+});
+
+module.exports = {
+  login,
+  profile,
+};
+</file>
+
+<file path="Backend/src/controllers/categorias.controller.js">
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sendResponse } = require("../utils/response");
+
+const getAllCategorias = asyncHandler(async (req, res) => {
+  const categorias = await prisma.categoria.findMany({
+    where: { deleted_at: null },
+    include: {
+      productos: {
+        where: { deleted_at: null },
+      },
+    },
+    orderBy: { id_categoria: "asc" },
+  });
+
+  sendResponse(res, 200, "Categorías obtenidas correctamente.", categorias);
+});
+
+const getCategoriaById = asyncHandler(async (req, res) => {
+  const categoria = await prisma.categoria.findFirst({
+    where: {
+      id_categoria: Number(req.params.id),
+      deleted_at: null,
+    },
+    include: {
+      productos: {
+        where: { deleted_at: null },
+      },
+    },
+  });
+
+  if (!categoria) {
+    throw new AppError("Categoría no encontrada.", 404);
+  }
+
+  sendResponse(res, 200, "Categoría obtenida correctamente.", categoria);
+});
+
+const createCategoria = asyncHandler(async (req, res) => {
+  const { nombre_categoria } = req.body;
+
+  if (!nombre_categoria) {
+    throw new AppError("El nombre de la categoría es obligatorio.", 400);
+  }
+
+  const categoria = await prisma.categoria.create({
+    data: { nombre_categoria },
+  });
+
+  sendResponse(res, 201, "Categoría creada correctamente.", categoria);
+});
+
+const updateCategoria = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+  const { nombre_categoria } = req.body;
+
+  const existing = await prisma.categoria.findFirst({
+    where: {
+      id_categoria: id,
+      deleted_at: null,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Categoría no encontrada.", 404);
+  }
+
+  const categoria = await prisma.categoria.update({
+    where: { id_categoria: id },
+    data: {
+      nombre_categoria: nombre_categoria ?? existing.nombre_categoria,
+    },
+  });
+
+  sendResponse(res, 200, "Categoría actualizada correctamente.", categoria);
+});
+
+const deleteCategoria = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+
+  const existing = await prisma.categoria.findFirst({
+    where: {
+      id_categoria: id,
+      deleted_at: null,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Categoría no encontrada.", 404);
+  }
+
+  const categoria = await prisma.categoria.update({
+    where: { id_categoria: id },
+    data: { deleted_at: new Date() },
+    include: {
+      productos: {
+        where: { deleted_at: null },
+      },
+    },
+  });
+
+  sendResponse(res, 200, "Categoría eliminada correctamente.", categoria);
+});
+
+module.exports = {
+  getAllCategorias,
+  getCategoriaById,
+  createCategoria,
+  updateCategoria,
+  deleteCategoria,
+};
+</file>
+
+<file path="Backend/src/controllers/cuentas.controller.js">
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sendResponse } = require("../utils/response");
+const { recalculateCuentaTotal } = require("../services/inventory.service");
+
+const cuentaInclude = {
+  mesa: true,
+  empleado: {
+    select: {
+      id_usuario: true,
+      nombre: true,
+      usuario: true,
+      rol: true,
+      estado: true,
+      created_at: true,
+      updated_at: true,
+    },
+  },
+  detalles: {
+    where: { deleted_at: null },
+    include: {
+      producto: {
+        include: {
+          imagenes: true,
+        },
+      },
+    },
+  },
+};
+
+const getAllCuentas = asyncHandler(async (req, res) => {
+  const cuentas = await prisma.cuenta.findMany({
+    where: { deleted_at: null },
+    include: cuentaInclude,
+    orderBy: { id_cuenta: "desc" },
+  });
+
+  sendResponse(res, 200, "Cuentas obtenidas correctamente.", cuentas);
+});
+
+const getCuentaById = asyncHandler(async (req, res) => {
+  const cuenta = await prisma.cuenta.findFirst({
+    where: {
+      id_cuenta: Number(req.params.id),
+      deleted_at: null,
+    },
+    include: cuentaInclude,
+  });
+
+  if (!cuenta) {
+    throw new AppError("Cuenta no encontrada.", 404);
+  }
+
+  sendResponse(res, 200, "Cuenta obtenida correctamente.", cuenta);
+});
+
+const createCuenta = asyncHandler(async (req, res) => {
+  const { id_mesa, id_empleado } = req.body;
+
+  if (!id_mesa || !id_empleado) {
+    throw new AppError("id_mesa e id_empleado son obligatorios.", 400);
+  }
+
+  const cuenta = await prisma.$transaction(async (tx) => {
+    const mesa = await tx.mesa.findFirst({
+      where: {
+        id_mesa: Number(id_mesa),
+        deleted_at: null,
+      },
+    });
+
+    if (!mesa) {
+      throw new AppError("Mesa no encontrada.", 404);
+    }
+
+    const empleado = await tx.usuario.findFirst({
+      where: {
+        id_usuario: Number(id_empleado),
+        estado: true,
+        deleted_at: null,
+      },
+    });
+
+    if (!empleado) {
+      throw new AppError("Empleado no encontrado.", 404);
+    }
+
+    const cuentaAbierta = await tx.cuenta.findFirst({
+      where: {
+        id_mesa: Number(id_mesa),
+        estado: "abierta",
+        deleted_at: null,
+      },
+    });
+
+    if (cuentaAbierta) {
+      throw new AppError("La mesa ya tiene una cuenta abierta.", 400);
+    }
+
+    await tx.mesa.update({
+      where: { id_mesa: Number(id_mesa) },
+      data: { estado: "ocupada" },
+    });
+
+    return tx.cuenta.create({
+      data: {
+        id_mesa: Number(id_mesa),
+        id_empleado: Number(id_empleado),
+      },
+      include: cuentaInclude,
+    });
+  });
+
+  sendResponse(res, 201, "Cuenta creada correctamente.", cuenta);
+});
+
+const updateCuenta = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+  const { id_mesa, id_empleado, estado, fecha_cierre } = req.body;
+
+  const existing = await prisma.cuenta.findFirst({
+    where: {
+      id_cuenta: id,
+      deleted_at: null,
+    },
+    include: {
+      detalles: {
+        where: { deleted_at: null },
+      },
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Cuenta no encontrada.", 404);
+  }
+
+  const cuenta = await prisma.$transaction(async (tx) => {
+    let mesaId = existing.id_mesa;
+    let empleadoId = existing.id_empleado;
+
+    if (id_mesa !== undefined && Number(id_mesa) !== existing.id_mesa) {
+      const mesa = await tx.mesa.findFirst({
+        where: {
+          id_mesa: Number(id_mesa),
+          deleted_at: null,
+        },
+      });
+
+      if (!mesa) {
+        throw new AppError("Mesa no encontrada.", 404);
+      }
+
+      const cuentaAbierta = await tx.cuenta.findFirst({
+        where: {
+          id_mesa: Number(id_mesa),
+          estado: "abierta",
+          deleted_at: null,
+          NOT: { id_cuenta: id },
+        },
+      });
+
+      if (cuentaAbierta) {
+        throw new AppError("La nueva mesa ya tiene una cuenta abierta.", 400);
+      }
+
+      await tx.mesa.update({
+        where: { id_mesa: existing.id_mesa },
+        data: { estado: "libre" },
+      });
+
+      await tx.mesa.update({
+        where: { id_mesa: Number(id_mesa) },
+        data: { estado: estado === "cerrada" ? "libre" : "ocupada" },
+      });
+
+      mesaId = Number(id_mesa);
+    }
+
+    if (id_empleado !== undefined && Number(id_empleado) !== existing.id_empleado) {
+      const empleado = await tx.usuario.findFirst({
+        where: {
+          id_usuario: Number(id_empleado),
+          estado: true,
+          deleted_at: null,
+        },
+      });
+
+      if (!empleado) {
+        throw new AppError("Empleado no encontrado.", 404);
+      }
+
+      empleadoId = Number(id_empleado);
+    }
+
+    if (estado === "cerrada") {
+      await tx.mesa.update({
+        where: { id_mesa: mesaId },
+        data: { estado: "libre" },
+      });
+    }
+
+    if (estado === "abierta") {
+      await tx.mesa.update({
+        where: { id_mesa: mesaId },
+        data: { estado: "ocupada" },
+      });
+    }
+
+    await tx.cuenta.update({
+      where: { id_cuenta: id },
+      data: {
+        id_mesa: mesaId,
+        id_empleado: empleadoId,
+        estado: estado ?? existing.estado,
+        fecha_cierre:
+          estado === "cerrada"
+            ? fecha_cierre
+              ? new Date(fecha_cierre)
+              : new Date()
+            : estado === "abierta"
+              ? null
+              : existing.fecha_cierre,
+      },
+    });
+
+    return recalculateCuentaTotal(tx, id);
+  });
+
+  sendResponse(res, 200, "Cuenta actualizada correctamente.", cuenta);
+});
+
+const deleteCuenta = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+
+  const existing = await prisma.cuenta.findFirst({
+    where: {
+      id_cuenta: id,
+      deleted_at: null,
+    },
+    include: {
+      detalles: {
+        where: { deleted_at: null },
+      },
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Cuenta no encontrada.", 404);
+  }
+
+  const cuenta = await prisma.$transaction(async (tx) => {
+    if (existing.estado === "abierta") {
+      for (const detalle of existing.detalles) {
+        const producto = await tx.producto.findUnique({
+          where: { id_producto: detalle.id_producto },
+        });
+
+        if (producto) {
+          await tx.producto.update({
+            where: { id_producto: detalle.id_producto },
+            data: {
+              stock: producto.stock + detalle.cantidad,
+            },
+          });
+
+          await tx.movimientoInventario.create({
+            data: {
+              id_producto: detalle.id_producto,
+              tipo_movimiento: "entrada",
+              cantidad: detalle.cantidad,
+              observacion: `Reversión automática por eliminación de cuenta #${existing.id_cuenta}`,
+            },
+          });
+        }
+      }
+    }
+
+    await tx.detalleCuenta.updateMany({
+      where: {
+        id_cuenta: id,
+        deleted_at: null,
+      },
+      data: {
+        deleted_at: new Date(),
+      },
+    });
+
+    await tx.mesa.update({
+      where: { id_mesa: existing.id_mesa },
+      data: { estado: "libre" },
+    });
+
+    return tx.cuenta.update({
+      where: { id_cuenta: id },
+      data: {
+        deleted_at: new Date(),
+      },
+      include: cuentaInclude,
+    });
+  });
+
+  sendResponse(res, 200, "Cuenta eliminada correctamente.", cuenta);
+});
+
+module.exports = {
+  getAllCuentas,
+  getCuentaById,
+  createCuenta,
+  updateCuenta,
+  deleteCuenta,
+};
+</file>
+
+<file path="Backend/src/controllers/detalleCuenta.controller.js">
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sendResponse } = require("../utils/response");
+const {
+  getActiveProducto,
+  applyStockChange,
+  recalculateCuentaTotal,
+  assertPositiveInteger,
+} = require("../services/inventory.service");
+
+const detalleInclude = {
+  cuenta: {
+    include: {
+      mesa: true,
+      empleado: {
+        select: {
+          id_usuario: true,
+          nombre: true,
+          usuario: true,
+          rol: true,
+        },
+      },
+    },
+  },
+  producto: {
+    include: {
+      categoria: true,
+    },
+  },
+};
+
+const getAllDetalles = asyncHandler(async (req, res) => {
+  const detalles = await prisma.detalleCuenta.findMany({
+    where: { deleted_at: null },
+    include: detalleInclude,
+    orderBy: { id_detalle: "desc" },
+  });
+
+  sendResponse(res, 200, "Detalles de cuenta obtenidos correctamente.", detalles);
+});
+
+const getDetalleById = asyncHandler(async (req, res) => {
+  const detalle = await prisma.detalleCuenta.findFirst({
+    where: {
+      id_detalle: Number(req.params.id),
+      deleted_at: null,
+    },
+    include: detalleInclude,
+  });
+
+  if (!detalle) {
+    throw new AppError("Detalle de cuenta no encontrado.", 404);
+  }
+
+  sendResponse(res, 200, "Detalle de cuenta obtenido correctamente.", detalle);
+});
+
+const createDetalle = asyncHandler(async (req, res) => {
+  const { id_cuenta, id_producto, cantidad, precio_unitario } = req.body;
+
+  if (!id_cuenta || !id_producto || cantidad === undefined) {
+    throw new AppError("id_cuenta, id_producto y cantidad son obligatorios.", 400);
+  }
+
+  assertPositiveInteger(Number(cantidad), "cantidad");
+
+  const detalle = await prisma.$transaction(async (tx) => {
+    const cuenta = await tx.cuenta.findFirst({
+      where: {
+        id_cuenta: Number(id_cuenta),
+        deleted_at: null,
+      },
+    });
+
+    if (!cuenta) {
+      throw new AppError("Cuenta no encontrada.", 404);
+    }
+
+    if (cuenta.estado !== "abierta") {
+      throw new AppError("No se pueden agregar productos a una cuenta cerrada.", 400);
+    }
+
+    const producto = await getActiveProducto(tx, Number(id_producto));
+    const unitPrice = precio_unitario !== undefined ? Number(precio_unitario) : Number(producto.precio_venta);
+    const subtotal = Number(cantidad) * unitPrice;
+
+    await applyStockChange(tx, producto.id_producto, -Number(cantidad));
+
+    const createdDetail = await tx.detalleCuenta.create({
+      data: {
+        id_cuenta: Number(id_cuenta),
+        id_producto: producto.id_producto,
+        cantidad: Number(cantidad),
+        precio_unitario: unitPrice,
+        subtotal,
+      },
+      include: detalleInclude,
+    });
+
+    await tx.movimientoInventario.create({
+      data: {
+        id_producto: producto.id_producto,
+        tipo_movimiento: "salida",
+        cantidad: Number(cantidad),
+        observacion: `Salida automática por detalle de cuenta #${id_cuenta}`,
+      },
+    });
+
+    await recalculateCuentaTotal(tx, Number(id_cuenta));
+
+    return createdDetail;
+  });
+
+  sendResponse(res, 201, "Detalle de cuenta creado correctamente.", detalle);
+});
+
+const updateDetalle = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+  const { id_producto, cantidad, precio_unitario } = req.body;
+
+  const existing = await prisma.detalleCuenta.findFirst({
+    where: {
+      id_detalle: id,
+      deleted_at: null,
+    },
+    include: {
+      cuenta: true,
+      producto: true,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Detalle de cuenta no encontrado.", 404);
+  }
+
+  if (existing.cuenta.estado !== "abierta") {
+    throw new AppError("No se puede modificar un detalle de una cuenta cerrada.", 400);
+  }
+
+  const detalle = await prisma.$transaction(async (tx) => {
+    const originalProductId = existing.id_producto;
+    const nextProductId = id_producto !== undefined ? Number(id_producto) : originalProductId;
+    const nextQuantity = cantidad !== undefined ? Number(cantidad) : existing.cantidad;
+
+    assertPositiveInteger(nextQuantity, "cantidad");
+
+    await applyStockChange(tx, originalProductId, existing.cantidad);
+
+    const producto = await getActiveProducto(tx, nextProductId);
+    const unitPrice = precio_unitario !== undefined ? Number(precio_unitario) : Number(existing.precio_unitario);
+    const subtotal = nextQuantity * unitPrice;
+
+    await applyStockChange(tx, nextProductId, -nextQuantity);
+
+    const updatedDetail = await tx.detalleCuenta.update({
+      where: { id_detalle: id },
+      data: {
+        id_producto: nextProductId,
+        cantidad: nextQuantity,
+        precio_unitario: unitPrice,
+        subtotal,
+      },
+      include: detalleInclude,
+    });
+
+    const quantityDelta = nextQuantity - existing.cantidad;
+
+    if (originalProductId !== nextProductId) {
+      await tx.movimientoInventario.create({
+        data: {
+          id_producto: originalProductId,
+          tipo_movimiento: "entrada",
+          cantidad: existing.cantidad,
+          observacion: `Reversión por actualización de detalle #${id}`,
+        },
+      });
+
+      await tx.movimientoInventario.create({
+        data: {
+          id_producto: nextProductId,
+          tipo_movimiento: "salida",
+          cantidad: nextQuantity,
+          observacion: `Salida por actualización de detalle #${id}`,
+        },
+      });
+    } else if (quantityDelta !== 0) {
+      await tx.movimientoInventario.create({
+        data: {
+          id_producto: nextProductId,
+          tipo_movimiento: quantityDelta > 0 ? "salida" : "entrada",
+          cantidad: Math.abs(quantityDelta),
+          observacion: `Ajuste automático por actualización de detalle #${id}`,
+        },
+      });
+    }
+
+    await recalculateCuentaTotal(tx, existing.id_cuenta);
+
+    return updatedDetail;
+  });
+
+  sendResponse(res, 200, "Detalle de cuenta actualizado correctamente.", detalle);
+});
+
+const deleteDetalle = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+
+  const existing = await prisma.detalleCuenta.findFirst({
+    where: {
+      id_detalle: id,
+      deleted_at: null,
+    },
+    include: {
+      cuenta: true,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Detalle de cuenta no encontrado.", 404);
+  }
+
+  if (existing.cuenta.estado !== "abierta") {
+    throw new AppError("No se puede eliminar un detalle de una cuenta cerrada.", 400);
+  }
+
+  const detalle = await prisma.$transaction(async (tx) => {
+    await applyStockChange(tx, existing.id_producto, existing.cantidad);
+
+    const deletedDetail = await tx.detalleCuenta.update({
+      where: { id_detalle: id },
+      data: {
+        deleted_at: new Date(),
+      },
+      include: detalleInclude,
+    });
+
+    await tx.movimientoInventario.create({
+      data: {
+        id_producto: existing.id_producto,
+        tipo_movimiento: "entrada",
+        cantidad: existing.cantidad,
+        observacion: `Reversión por eliminación de detalle #${id}`,
+      },
+    });
+
+    await recalculateCuentaTotal(tx, existing.id_cuenta);
+
+    return deletedDetail;
+  });
+
+  sendResponse(res, 200, "Detalle de cuenta eliminado correctamente.", detalle);
+});
+
+module.exports = {
+  getAllDetalles,
+  getDetalleById,
+  createDetalle,
+  updateDetalle,
+  deleteDetalle,
+};
+</file>
+
+<file path="Backend/src/controllers/mesas.controller.js">
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sendResponse } = require("../utils/response");
+
+const mesaInclude = {
+  cuentas: {
+    where: { deleted_at: null },
+  },
+};
+
+const getAllMesas = asyncHandler(async (req, res) => {
+  const mesas = await prisma.mesa.findMany({
+    where: { deleted_at: null },
+    include: mesaInclude,
+    orderBy: { numero_mesa: "asc" },
+  });
+
+  sendResponse(res, 200, "Mesas obtenidas correctamente.", mesas);
+});
+
+const getMesaById = asyncHandler(async (req, res) => {
+  const mesa = await prisma.mesa.findFirst({
+    where: {
+      id_mesa: Number(req.params.id),
+      deleted_at: null,
+    },
+    include: mesaInclude,
+  });
+
+  if (!mesa) {
+    throw new AppError("Mesa no encontrada.", 404);
+  }
+
+  sendResponse(res, 200, "Mesa obtenida correctamente.", mesa);
+});
+
+const createMesa = asyncHandler(async (req, res) => {
+  const { numero_mesa, estado = "libre" } = req.body;
+
+  if (!numero_mesa) {
+    throw new AppError("El número de mesa es obligatorio.", 400);
+  }
+
+  const existing = await prisma.mesa.findFirst({
+    where: {
+      numero_mesa: Number(numero_mesa),
+    },
+  });
+
+  if (existing) {
+    throw new AppError("El número de mesa ya existe.", 409);
+  }
+
+  const mesa = await prisma.mesa.create({
+    data: {
+      numero_mesa: Number(numero_mesa),
+      estado,
+    },
+    include: mesaInclude,
+  });
+
+  sendResponse(res, 201, "Mesa creada correctamente.", mesa);
+});
+
+const updateMesa = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+  const { numero_mesa, estado } = req.body;
+
+  const existing = await prisma.mesa.findFirst({
+    where: {
+      id_mesa: id,
+      deleted_at: null,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Mesa no encontrada.", 404);
+  }
+
+  if (numero_mesa !== undefined && Number(numero_mesa) !== existing.numero_mesa) {
+    const duplicate = await prisma.mesa.findFirst({
+      where: {
+        numero_mesa: Number(numero_mesa),
+        NOT: { id_mesa: id },
+      },
+    });
+
+    if (duplicate) {
+      throw new AppError("El número de mesa ya existe.", 409);
+    }
+  }
+
+  const mesa = await prisma.mesa.update({
+    where: { id_mesa: id },
+    data: {
+      numero_mesa: numero_mesa !== undefined ? Number(numero_mesa) : existing.numero_mesa,
+      estado: estado ?? existing.estado,
+    },
+    include: mesaInclude,
+  });
+
+  sendResponse(res, 200, "Mesa actualizada correctamente.", mesa);
+});
+
+const deleteMesa = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+
+  const existing = await prisma.mesa.findFirst({
+    where: {
+      id_mesa: id,
+      deleted_at: null,
+    },
+    include: {
+      cuentas: {
+        where: { deleted_at: null },
+      },
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Mesa no encontrada.", 404);
+  }
+
+  if (existing.cuentas.length > 0) {
+    throw new AppError("No se puede eliminar una mesa con cuentas asociadas.", 400);
+  }
+
+  const mesa = await prisma.mesa.update({
+    where: { id_mesa: id },
+    data: {
+      deleted_at: new Date(),
+    },
+    include: mesaInclude,
+  });
+
+  sendResponse(res, 200, "Mesa eliminada correctamente.", mesa);
+});
+
+module.exports = {
+  getAllMesas,
+  getMesaById,
+  createMesa,
+  updateMesa,
+  deleteMesa,
+};
+</file>
+
+<file path="Backend/src/controllers/movimientos.controller.js">
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sendResponse } = require("../utils/response");
+const {
+  applyMovementEffect,
+  revertMovementEffect,
+  assertPositiveInteger,
+} = require("../services/inventory.service");
+
+const movimientoInclude = {
+  producto: {
+    include: {
+      categoria: true,
+    },
+  },
+};
+
+const getAllMovimientos = asyncHandler(async (req, res) => {
+  const movimientos = await prisma.movimientoInventario.findMany({
+    where: { deleted_at: null },
+    include: movimientoInclude,
+    orderBy: { id_movimiento: "desc" },
+  });
+
+  sendResponse(res, 200, "Movimientos obtenidos correctamente.", movimientos);
+});
+
+const getMovimientoById = asyncHandler(async (req, res) => {
+  const movimiento = await prisma.movimientoInventario.findFirst({
+    where: {
+      id_movimiento: Number(req.params.id),
+      deleted_at: null,
+    },
+    include: movimientoInclude,
+  });
+
+  if (!movimiento) {
+    throw new AppError("Movimiento no encontrado.", 404);
+  }
+
+  sendResponse(res, 200, "Movimiento obtenido correctamente.", movimiento);
+});
+
+const createMovimiento = asyncHandler(async (req, res) => {
+  const { id_producto, tipo_movimiento, cantidad, fecha, observacion } = req.body;
+
+  if (!id_producto || !tipo_movimiento || cantidad === undefined) {
+    throw new AppError("id_producto, tipo_movimiento y cantidad son obligatorios.", 400);
+  }
+
+  assertPositiveInteger(Number(cantidad), "cantidad");
+
+  const movimiento = await prisma.$transaction(async (tx) => {
+    await applyMovementEffect(tx, {
+      id_producto: Number(id_producto),
+      tipo_movimiento,
+      cantidad: Number(cantidad),
+    });
+
+    return tx.movimientoInventario.create({
+      data: {
+        id_producto: Number(id_producto),
+        tipo_movimiento,
+        cantidad: Number(cantidad),
+        fecha: fecha ? new Date(fecha) : new Date(),
+        observacion,
+      },
+      include: movimientoInclude,
+    });
+  });
+
+  sendResponse(res, 201, "Movimiento creado correctamente.", movimiento);
+});
+
+const updateMovimiento = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+  const { id_producto, tipo_movimiento, cantidad, fecha, observacion } = req.body;
+
+  const existing = await prisma.movimientoInventario.findFirst({
+    where: {
+      id_movimiento: id,
+      deleted_at: null,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Movimiento no encontrado.", 404);
+  }
+
+  const movement = await prisma.$transaction(async (tx) => {
+    await revertMovementEffect(tx, existing);
+
+    const nextMovement = {
+      id_producto: id_producto !== undefined ? Number(id_producto) : existing.id_producto,
+      tipo_movimiento: tipo_movimiento ?? existing.tipo_movimiento,
+      cantidad: cantidad !== undefined ? Number(cantidad) : existing.cantidad,
+    };
+
+    assertPositiveInteger(nextMovement.cantidad, "cantidad");
+
+    await applyMovementEffect(tx, nextMovement);
+
+    return tx.movimientoInventario.update({
+      where: { id_movimiento: id },
+      data: {
+        id_producto: nextMovement.id_producto,
+        tipo_movimiento: nextMovement.tipo_movimiento,
+        cantidad: nextMovement.cantidad,
+        fecha: fecha ? new Date(fecha) : existing.fecha,
+        observacion: observacion ?? existing.observacion,
+      },
+      include: movimientoInclude,
+    });
+  });
+
+  sendResponse(res, 200, "Movimiento actualizado correctamente.", movement);
+});
+
+const deleteMovimiento = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+
+  const existing = await prisma.movimientoInventario.findFirst({
+    where: {
+      id_movimiento: id,
+      deleted_at: null,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Movimiento no encontrado.", 404);
+  }
+
+  const movimiento = await prisma.$transaction(async (tx) => {
+    await revertMovementEffect(tx, existing);
+
+    return tx.movimientoInventario.update({
+      where: { id_movimiento: id },
+      data: {
+        deleted_at: new Date(),
+      },
+      include: movimientoInclude,
+    });
+  });
+
+  sendResponse(res, 200, "Movimiento eliminado correctamente.", movimiento);
+});
+
+module.exports = {
+  getAllMovimientos,
+  getMovimientoById,
+  createMovimiento,
+  updateMovimiento,
+  deleteMovimiento,
+};
+</file>
+
+<file path="Backend/src/controllers/productoImagen.controller.js">
+const fs = require("fs/promises");
+const path = require("path");
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sendResponse } = require("../utils/response");
+
+const fileUrlFromName = (filename) => `/uploads/productos/${filename}`;
+
+const absolutePathFromUrl = (urlImagen) => {
+  const normalized = urlImagen.replace(/^\/+/, "");
+  return path.join(process.cwd(), normalized);
+};
+
+const getProductoImagenes = asyncHandler(async (req, res) => {
+  const idProducto = Number(req.params.id);
+
+  const producto = await prisma.producto.findFirst({
+    where: {
+      id_producto: idProducto,
+      deleted_at: null,
+    },
+    include: {
+      imagenes: {
+        orderBy: { created_at: "desc" },
+      },
+    },
+  });
+
+  if (!producto) {
+    throw new AppError("Producto no encontrado.", 404);
+  }
+
+  sendResponse(res, 200, "Imágenes obtenidas correctamente.", producto.imagenes);
+});
+
+const uploadProductoImagenes = asyncHandler(async (req, res) => {
+  const idProducto = Number(req.params.id);
+  const files = req.files || [];
+
+  if (!files.length) {
+    throw new AppError("Debes seleccionar al menos una imagen.", 400);
+  }
+
+  const producto = await prisma.producto.findFirst({
+    where: {
+      id_producto: idProducto,
+      deleted_at: null,
+    },
+  });
+
+  if (!producto) {
+    throw new AppError("Producto no encontrado.", 404);
+  }
+
+  const createdImages = await prisma.$transaction(
+    files.map((file) =>
+      prisma.productoImagen.create({
+        data: {
+          id_producto: idProducto,
+          url_imagen: fileUrlFromName(file.filename),
+        },
+      })
+    )
+  );
+
+  sendResponse(res, 201, "Imágenes subidas correctamente.", createdImages);
+});
+
+const updateProductoImagen = asyncHandler(async (req, res) => {
+  const idImagen = Number(req.params.imageId);
+  const file = req.file;
+
+  if (!file) {
+    throw new AppError("Debes seleccionar una imagen para actualizar.", 400);
+  }
+
+  const existingImage = await prisma.productoImagen.findUnique({
+    where: { id_imagen: idImagen },
+  });
+
+  if (!existingImage) {
+    throw new AppError("Imagen no encontrada.", 404);
+  }
+
+  const updatedImage = await prisma.productoImagen.update({
+    where: { id_imagen: idImagen },
+    data: {
+      url_imagen: fileUrlFromName(file.filename),
+    },
+  });
+
+  await fs.unlink(absolutePathFromUrl(existingImage.url_imagen)).catch(() => null);
+
+  sendResponse(res, 200, "Imagen actualizada correctamente.", updatedImage);
+});
+
+const deleteProductoImagen = asyncHandler(async (req, res) => {
+  const idImagen = Number(req.params.imageId);
+
+  const existingImage = await prisma.productoImagen.findUnique({
+    where: { id_imagen: idImagen },
+  });
+
+  if (!existingImage) {
+    throw new AppError("Imagen no encontrada.", 404);
+  }
+
+  await prisma.productoImagen.delete({
+    where: { id_imagen: idImagen },
+  });
+
+  await fs.unlink(absolutePathFromUrl(existingImage.url_imagen)).catch(() => null);
+
+  sendResponse(res, 200, "Imagen eliminada correctamente.", existingImage);
+});
+
+module.exports = {
+  getProductoImagenes,
+  uploadProductoImagenes,
+  updateProductoImagen,
+  deleteProductoImagen,
+};
+</file>
+
+<file path="Backend/src/controllers/productos.controller.js">
+const fs = require("fs/promises");
+const path = require("path");
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sendResponse } = require("../utils/response");
+
+const productoInclude = {
+  categoria: true,
+  movimientos: {
+    where: { deleted_at: null },
+  },
+  imagenes: {
+    orderBy: { created_at: "desc" },
+  },
+};
+
+const resolveImagePath = (urlImagen) => path.join(process.cwd(), urlImagen.replace(/^\/+/, ""));
+
+const getAllProductos = asyncHandler(async (req, res) => {
+  const productos = await prisma.producto.findMany({
+    where: { deleted_at: null },
+    include: productoInclude,
+    orderBy: { id_producto: "asc" },
+  });
+
+  sendResponse(res, 200, "Productos obtenidos correctamente.", productos);
+});
+
+const getProductoById = asyncHandler(async (req, res) => {
+  const producto = await prisma.producto.findFirst({
+    where: {
+      id_producto: Number(req.params.id),
+      deleted_at: null,
+    },
+    include: productoInclude,
+  });
+
+  if (!producto) {
+    throw new AppError("Producto no encontrado.", 404);
+  }
+
+  sendResponse(res, 200, "Producto obtenido correctamente.", producto);
+});
+
+const createProducto = asyncHandler(async (req, res) => {
+  const {
+    nombre,
+    precio_venta,
+    stock = 0,
+    stock_minimo = 0,
+    id_categoria,
+    estado = true,
+  } = req.body;
+
+  if (!nombre || precio_venta === undefined || id_categoria === undefined) {
+    throw new AppError("Nombre, precio de venta e id_categoria son obligatorios.", 400);
+  }
+
+  if (Number(stock) < 0 || Number(stock_minimo) < 0) {
+    throw new AppError("El stock y stock mínimo no pueden ser negativos.", 400);
+  }
+
+  const categoria = await prisma.categoria.findFirst({
+    where: {
+      id_categoria: Number(id_categoria),
+      deleted_at: null,
+    },
+  });
+
+  if (!categoria) {
+    throw new AppError("Categoría válida requerida.", 400);
+  }
+
+  const producto = await prisma.producto.create({
+    data: {
+      nombre,
+      precio_venta: Number(precio_venta),
+      stock: Number(stock),
+      stock_minimo: Number(stock_minimo),
+      id_categoria: Number(id_categoria),
+      estado,
+    },
+    include: productoInclude,
+  });
+
+  sendResponse(res, 201, "Producto creado correctamente.", producto);
+});
+
+const updateProducto = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+  const payload = req.body;
+
+  const existing = await prisma.producto.findFirst({
+    where: {
+      id_producto: id,
+      deleted_at: null,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Producto no encontrado.", 404);
+  }
+
+  if (payload.id_categoria !== undefined) {
+    const categoria = await prisma.categoria.findFirst({
+      where: {
+        id_categoria: Number(payload.id_categoria),
+        deleted_at: null,
+      },
+    });
+
+    if (!categoria) {
+      throw new AppError("Categoría válida requerida.", 400);
+    }
+  }
+
+  const nextStock = payload.stock !== undefined ? Number(payload.stock) : existing.stock;
+  const nextMinStock =
+    payload.stock_minimo !== undefined ? Number(payload.stock_minimo) : existing.stock_minimo;
+
+  if (nextStock < 0 || nextMinStock < 0) {
+    throw new AppError("El stock y stock mínimo no pueden ser negativos.", 400);
+  }
+
+  const producto = await prisma.producto.update({
+    where: { id_producto: id },
+    data: {
+      nombre: payload.nombre ?? existing.nombre,
+      precio_venta:
+        payload.precio_venta !== undefined ? Number(payload.precio_venta) : existing.precio_venta,
+      stock: nextStock,
+      stock_minimo: nextMinStock,
+      id_categoria:
+        payload.id_categoria !== undefined ? Number(payload.id_categoria) : existing.id_categoria,
+      estado: typeof payload.estado === "boolean" ? payload.estado : existing.estado,
+    },
+    include: productoInclude,
+  });
+
+  sendResponse(res, 200, "Producto actualizado correctamente.", producto);
+});
+
+const deleteProducto = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+
+  const existing = await prisma.producto.findFirst({
+    where: {
+      id_producto: id,
+      deleted_at: null,
+    },
+    include: {
+      imagenes: true,
+    },
+  });
+
+  if (!existing) {
+    throw new AppError("Producto no encontrado.", 404);
+  }
+
+  const producto = await prisma.$transaction(async (tx) => {
+    await tx.producto.update({
+      where: { id_producto: id },
+      data: {
+        estado: false,
+        deleted_at: new Date(),
+      },
+    });
+
+    await tx.movimientoInventario.updateMany({
+      where: { id_producto: id, deleted_at: null },
+      data: { deleted_at: new Date() },
+    });
+
+    await tx.productoImagen.deleteMany({
+      where: { id_producto: id },
+    });
+
+    return tx.producto.findUnique({
+      where: { id_producto: id },
+      include: productoInclude,
+    });
+  });
+
+  await Promise.all(existing.imagenes.map((image) => fs.unlink(resolveImagePath(image.url_imagen)).catch(() => null)));
+
+  sendResponse(res, 200, "Producto eliminado correctamente.", producto);
+});
+
+module.exports = {
+  getAllProductos,
+  getProductoById,
+  createProducto,
+  updateProducto,
+  deleteProducto,
+};
+</file>
+
+<file path="Backend/src/controllers/usuarios.controller.js">
+const bcrypt = require("bcrypt");
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+const asyncHandler = require("../utils/asyncHandler");
+const { sendResponse } = require("../utils/response");
+const { sanitizeUsuario } = require("../utils/sanitize");
+
+const getAllUsuarios = asyncHandler(async (req, res) => {
+  const usuarios = await prisma.usuario.findMany({
+    where: { deleted_at: null },
+    orderBy: { id_usuario: "asc" },
+  });
+
+  sendResponse(res, 200, "Usuarios obtenidos correctamente.", usuarios.map(sanitizeUsuario));
+});
+
+const getUsuarioById = asyncHandler(async (req, res) => {
+  const usuario = await prisma.usuario.findFirst({
+    where: {
+      id_usuario: Number(req.params.id),
+      deleted_at: null,
+    },
+  });
+
+  if (!usuario) {
+    throw new AppError("Usuario no encontrado.", 404);
+  }
+
+  sendResponse(res, 200, "Usuario obtenido correctamente.", sanitizeUsuario(usuario));
+});
+
+const createUsuario = asyncHandler(async (req, res) => {
+  const { nombre, usuario, contrasena, rol = "empleado", estado = true } = req.body;
+
+  if (!nombre || !usuario || !contrasena) {
+    throw new AppError("Nombre, usuario y contraseña son obligatorios.", 400);
+  }
+
+  const exists = await prisma.usuario.findFirst({
+    where: { usuario },
+  });
+
+  if (exists) {
+    throw new AppError("El nombre de usuario ya existe.", 409);
+  }
+
+  const hashedPassword = await bcrypt.hash(contrasena, 10);
+
+  const newUser = await prisma.usuario.create({
+    data: {
+      nombre,
+      usuario,
+      contrasena: hashedPassword,
+      rol,
+      estado,
+    },
+  });
+
+  sendResponse(res, 201, "Usuario creado correctamente.", sanitizeUsuario(newUser));
+});
+
+const updateUsuario = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+  const { nombre, usuario, contrasena, rol, estado } = req.body;
+
+  const existingUser = await prisma.usuario.findFirst({
+    where: {
+      id_usuario: id,
+      deleted_at: null,
+    },
+  });
+
+  if (!existingUser) {
+    throw new AppError("Usuario no encontrado.", 404);
+  }
+
+  if (usuario && usuario !== existingUser.usuario) {
+    const duplicated = await prisma.usuario.findFirst({
+      where: {
+        usuario,
+        deleted_at: null,
+        NOT: { id_usuario: id },
+      },
+    });
+
+    if (duplicated) {
+      throw new AppError("El nombre de usuario ya existe.", 409);
+    }
+  }
+
+  const updatedUser = await prisma.usuario.update({
+    where: { id_usuario: id },
+    data: {
+      nombre: nombre ?? existingUser.nombre,
+      usuario: usuario ?? existingUser.usuario,
+      contrasena: contrasena ? await bcrypt.hash(contrasena, 10) : existingUser.contrasena,
+      rol: rol ?? existingUser.rol,
+      estado: typeof estado === "boolean" ? estado : existingUser.estado,
+    },
+  });
+
+  sendResponse(res, 200, "Usuario actualizado correctamente.", sanitizeUsuario(updatedUser));
+});
+
+const deleteUsuario = asyncHandler(async (req, res) => {
+  const id = Number(req.params.id);
+
+  const existingUser = await prisma.usuario.findFirst({
+    where: {
+      id_usuario: id,
+      deleted_at: null,
+    },
+  });
+
+  if (!existingUser) {
+    throw new AppError("Usuario no encontrado.", 404);
+  }
+
+  const usuario = await prisma.usuario.update({
+    where: { id_usuario: id },
+    data: {
+      estado: false,
+      deleted_at: new Date(),
+    },
+  });
+
+  sendResponse(res, 200, "Usuario eliminado correctamente.", sanitizeUsuario(usuario));
+});
+
+module.exports = {
+  getAllUsuarios,
+  getUsuarioById,
+  createUsuario,
+  updateUsuario,
+  deleteUsuario,
+};
+</file>
+
+<file path="Backend/src/middlewares/auth.middleware.js">
+const jwt = require("jsonwebtoken");
+const prisma = require("../config/database");
+const AppError = require("../utils/appError");
+
+const verifyToken = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      throw new AppError("Token no proporcionado.", 401);
+    }
+
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const usuario = await prisma.usuario.findFirst({
+      where: {
+        id_usuario: decoded.id_usuario,
+        estado: true,
+        deleted_at: null,
+      },
+    });
+
+    if (!usuario) {
+      throw new AppError("Usuario no autorizado.", 401);
+    }
+
+    req.user = {
+      id_usuario: usuario.id_usuario,
+      nombre: usuario.nombre,
+      usuario: usuario.usuario,
+      rol: usuario.rol,
+    };
+
+    next();
+  } catch (error) {
+    next(error.name === "JsonWebTokenError" || error.name === "TokenExpiredError"
+      ? new AppError("JWT inválido o expirado.", 401)
+      : error);
+  }
+};
+
+module.exports = {
+  verifyToken,
+};
+</file>
+
+<file path="Backend/src/middlewares/error.middleware.js">
+const { Prisma } = require("@prisma/client");
+
+const errorMiddleware = (error, req, res, next) => {
+  const statusCode = error.statusCode || (error.name === "MulterError" ? 400 : 500);
+  let message = error.message || "Error interno del servidor.";
+
+  if (error instanceof Prisma.PrismaClientKnownRequestError) {
+    if (error.code === "P2002") {
+      message = "Ya existe un registro con un valor único duplicado.";
+    }
+
+    if (error.code === "P2025") {
+      message = "El recurso solicitado no existe.";
+    }
+  }
+
+  if (error.name === "MulterError") {
+    message = "Error al procesar el archivo subido.";
+  }
+
+  res.status(statusCode).json({
+    success: false,
+    message,
+    data: error.data || null,
+  });
+};
+
+module.exports = errorMiddleware;
+</file>
+
+<file path="Backend/src/middlewares/role.middleware.js">
+const AppError = require("../utils/appError");
+
+const verifyAdmin = (req, res, next) => {
+  if (!req.user || req.user.rol !== "admin") {
+    return next(new AppError("Acceso restringido a administradores.", 403));
+  }
+
+  next();
+};
+
+module.exports = {
+  verifyAdmin,
+};
+</file>
+
+<file path="Backend/src/middlewares/upload.middleware.js">
+const fs = require("fs");
+const path = require("path");
+const multer = require("multer");
+
+const productUploadsDir = path.join(process.cwd(), "uploads", "productos");
+
+fs.mkdirSync(productUploadsDir, { recursive: true });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, productUploadsDir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname || "").toLowerCase() || ".png";
+    const safeBase = path
+      .basename(file.originalname || "imagen", ext)
+      .replace(/[^a-zA-Z0-9-_]/g, "-")
+      .slice(0, 50);
+
+    cb(null, `${Date.now()}-${safeBase}${ext}`);
+  },
+});
+
+const imageFileFilter = (req, file, cb) => {
+  if (!file.mimetype.startsWith("image/")) {
+    return cb(new Error("Solo se permiten archivos de imagen."));
+  }
+
+  cb(null, true);
+};
+
+const productImageUpload = multer({
+  storage,
+  fileFilter: imageFileFilter,
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+    files: 8,
+  },
+});
+
+module.exports = {
+  productImageUpload,
+  productUploadsDir,
+};
+</file>
+
+<file path="Backend/src/routes/auth.routes.js">
+const express = require("express");
+const { login, profile } = require("../controllers/auth.controller");
+const { verifyToken } = require("../middlewares/auth.middleware");
+
+const router = express.Router();
+
+router.post("/login", login);
+router.get("/me", verifyToken, profile);
+
+module.exports = router;
+</file>
+
+<file path="Backend/src/routes/categorias.routes.js">
+const express = require("express");
+const controller = require("../controllers/categorias.controller");
+const { verifyToken } = require("../middlewares/auth.middleware");
+const { verifyAdmin } = require("../middlewares/role.middleware");
+
+const router = express.Router();
+
+router.use(verifyToken);
+router.get("/", controller.getAllCategorias);
+router.get("/:id", controller.getCategoriaById);
+router.post("/", controller.createCategoria);
+router.put("/:id", controller.updateCategoria);
+router.delete("/:id", verifyAdmin, controller.deleteCategoria);
+
+module.exports = router;
+</file>
+
+<file path="Backend/src/routes/cuentas.routes.js">
+const express = require("express");
+const controller = require("../controllers/cuentas.controller");
+const { verifyToken } = require("../middlewares/auth.middleware");
+const { verifyAdmin } = require("../middlewares/role.middleware");
+
+const router = express.Router();
+
+router.use(verifyToken);
+router.get("/", controller.getAllCuentas);
+router.get("/:id", controller.getCuentaById);
+router.post("/", controller.createCuenta);
+router.put("/:id", controller.updateCuenta);
+router.delete("/:id", verifyAdmin, controller.deleteCuenta);
+
+module.exports = router;
+</file>
+
+<file path="Backend/src/routes/detalleCuenta.routes.js">
+const express = require("express");
+const controller = require("../controllers/detalleCuenta.controller");
+const { verifyToken } = require("../middlewares/auth.middleware");
+const { verifyAdmin } = require("../middlewares/role.middleware");
+
+const router = express.Router();
+
+router.use(verifyToken);
+router.get("/", controller.getAllDetalles);
+router.get("/:id", controller.getDetalleById);
+router.post("/", controller.createDetalle);
+router.put("/:id", controller.updateDetalle);
+router.delete("/:id", verifyAdmin, controller.deleteDetalle);
+
+module.exports = router;
+</file>
+
+<file path="Backend/src/routes/mesas.routes.js">
+const express = require("express");
+const controller = require("../controllers/mesas.controller");
+const { verifyToken } = require("../middlewares/auth.middleware");
+const { verifyAdmin } = require("../middlewares/role.middleware");
+
+const router = express.Router();
+
+router.use(verifyToken);
+router.get("/", controller.getAllMesas);
+router.get("/:id", controller.getMesaById);
+router.post("/", controller.createMesa);
+router.put("/:id", controller.updateMesa);
+router.delete("/:id", verifyAdmin, controller.deleteMesa);
+
+module.exports = router;
+</file>
+
+<file path="Backend/src/routes/movimientos.routes.js">
+const express = require("express");
+const controller = require("../controllers/movimientos.controller");
+const { verifyToken } = require("../middlewares/auth.middleware");
+const { verifyAdmin } = require("../middlewares/role.middleware");
+
+const router = express.Router();
+
+router.use(verifyToken);
+router.get("/", controller.getAllMovimientos);
+router.get("/:id", controller.getMovimientoById);
+router.post("/", controller.createMovimiento);
+router.put("/:id", controller.updateMovimiento);
+router.delete("/:id", verifyAdmin, controller.deleteMovimiento);
+
+module.exports = router;
+</file>
+
+<file path="Backend/src/routes/productos.routes.js">
+const express = require("express");
+const controller = require("../controllers/productos.controller");
+const productoImagenController = require("../controllers/productoImagen.controller");
+const { verifyToken } = require("../middlewares/auth.middleware");
+const { verifyAdmin } = require("../middlewares/role.middleware");
+const { productImageUpload } = require("../middlewares/upload.middleware");
+
+const router = express.Router();
+
+router.use(verifyToken);
+router.get("/", controller.getAllProductos);
+router.post("/", controller.createProducto);
+router.get("/:id/imagenes", productoImagenController.getProductoImagenes);
+router.post("/:id/imagenes", productImageUpload.array("imagenes", 8), productoImagenController.uploadProductoImagenes);
+router.put("/imagenes/:imageId", productImageUpload.single("imagen"), productoImagenController.updateProductoImagen);
+router.delete("/imagenes/:imageId", verifyAdmin, productoImagenController.deleteProductoImagen);
+router.get("/:id", controller.getProductoById);
+router.put("/:id", controller.updateProducto);
+router.delete("/:id", verifyAdmin, controller.deleteProducto);
+
+module.exports = router;
+</file>
+
+<file path="Backend/src/routes/usuarios.routes.js">
+const express = require("express");
+const controller = require("../controllers/usuarios.controller");
+const { verifyToken } = require("../middlewares/auth.middleware");
+const { verifyAdmin } = require("../middlewares/role.middleware");
+
+const router = express.Router();
+
+router.use(verifyToken, verifyAdmin);
+router.get("/", controller.getAllUsuarios);
+router.get("/:id", controller.getUsuarioById);
+router.post("/", controller.createUsuario);
+router.put("/:id", controller.updateUsuario);
+router.delete("/:id", controller.deleteUsuario);
+
+module.exports = router;
+</file>
+
+<file path="Backend/src/server.js">
+require("dotenv").config();
+
+const app = require("./app");
+const prisma = require("./config/database");
+const { ensureDefaultAdmin } = require("./services/auth.service");
+
+const PORT = process.env.PORT || 3001;
+
+const startServer = async () => {
+  try {
+    await prisma.$connect();
+    await ensureDefaultAdmin(prisma);
+
+    app.listen(PORT, () => {
+      console.log(`Servidor backend corriendo en el puerto ${PORT}`);
+    });
+  } catch (error) {
+    console.error("No fue posible iniciar el servidor:", error.message);
+    process.exit(1);
+  }
+};
+
+startServer();
+</file>
+
+<file path="Backend/src/services/auth.service.js">
+const bcrypt = require("bcrypt");
+
+const ensureDefaultAdmin = async (prisma) => {
+  const username = "admin";
+  const password = "1234";
+
+  const existingAdmin = await prisma.usuario.findFirst({
+    where: {
+      usuario: {
+        equals: username,
+        mode: "insensitive",
+      },
+      deleted_at: null,
+    },
+  });
+
+  if (!existingAdmin) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await prisma.usuario.create({
+      data: {
+        nombre: "Administrador General",
+        usuario: username,
+        contrasena: hashedPassword,
+        rol: "admin",
+        estado: true,
+      },
+    });
+
+    return;
+  }
+
+  if (!existingAdmin.contrasena?.startsWith("$2")) {
+    const hashedPassword = await bcrypt.hash(existingAdmin.contrasena || password, 10);
+
+    await prisma.usuario.update({
+      where: { id_usuario: existingAdmin.id_usuario },
+      data: {
+        contrasena: hashedPassword,
+        estado: true,
+      },
+    });
+  }
+};
+
+module.exports = {
+  ensureDefaultAdmin,
+};
+</file>
+
+<file path="Backend/src/services/inventory.service.js">
+const AppError = require("../utils/appError");
+
+const PRODUCT_INCLUDE = {
+  categoria: true,
+};
+
+const assertPositiveInteger = (value, fieldName) => {
+  if (!Number.isInteger(value) || value <= 0) {
+    throw new AppError(`${fieldName} debe ser un entero positivo.`, 400);
+  }
+};
+
+const getActiveProducto = async (tx, idProducto) => {
+  const producto = await tx.producto.findFirst({
+    where: {
+      id_producto: Number(idProducto),
+      estado: true,
+      deleted_at: null,
+    },
+    include: PRODUCT_INCLUDE,
+  });
+
+  if (!producto) {
+    throw new AppError("Producto no encontrado.", 404);
+  }
+
+  return producto;
+};
+
+const applyStockChange = async (tx, idProducto, delta) => {
+  const producto = await getActiveProducto(tx, idProducto);
+  const nuevoStock = producto.stock + delta;
+
+  if (nuevoStock < 0) {
+    throw new AppError(`Stock insuficiente para el producto ${producto.nombre}.`, 400);
+  }
+
+  return tx.producto.update({
+    where: { id_producto: producto.id_producto },
+    data: { stock: nuevoStock },
+    include: PRODUCT_INCLUDE,
+  });
+};
+
+const applyMovementEffect = async (tx, movement) => {
+  assertPositiveInteger(movement.cantidad, "cantidad");
+
+  const delta = movement.tipo_movimiento === "entrada" ? movement.cantidad : -movement.cantidad;
+  return applyStockChange(tx, movement.id_producto, delta);
+};
+
+const revertMovementEffect = async (tx, movement) => {
+  const delta = movement.tipo_movimiento === "entrada" ? -movement.cantidad : movement.cantidad;
+  return applyStockChange(tx, movement.id_producto, delta);
+};
+
+const recalculateCuentaTotal = async (tx, idCuenta) => {
+  const detalles = await tx.detalleCuenta.findMany({
+    where: {
+      id_cuenta: Number(idCuenta),
+      deleted_at: null,
+    },
+  });
+
+  const total = detalles.reduce((acc, item) => acc + Number(item.subtotal), 0);
+
+  return tx.cuenta.update({
+    where: { id_cuenta: Number(idCuenta) },
+    data: { total },
+    include: {
+      mesa: true,
+      empleado: {
+        select: {
+          id_usuario: true,
+          nombre: true,
+          usuario: true,
+          rol: true,
+          estado: true,
+          created_at: true,
+          updated_at: true,
+        },
+      },
+      detalles: {
+        where: { deleted_at: null },
+        include: {
+          producto: true,
+        },
+      },
+    },
+  });
+};
+
+module.exports = {
+  assertPositiveInteger,
+  getActiveProducto,
+  applyStockChange,
+  applyMovementEffect,
+  revertMovementEffect,
+  recalculateCuentaTotal,
+};
+</file>
+
+<file path="Backend/src/utils/appError.js">
+class AppError extends Error {
+  constructor(message, statusCode = 400, data = null) {
+    super(message);
+    this.statusCode = statusCode;
+    this.data = data;
+    this.isOperational = true;
+  }
+}
+
+module.exports = AppError;
+</file>
+
+<file path="Backend/src/utils/asyncHandler.js">
+const asyncHandler = (handler) => async (req, res, next) => {
+  try {
+    await handler(req, res, next);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = asyncHandler;
+</file>
+
+<file path="Backend/src/utils/response.js">
+const sendResponse = (res, statusCode, message, data = null) =>
+  res.status(statusCode).json({
+    success: true,
+    message,
+    data,
+  });
+
+module.exports = {
+  sendResponse,
+};
+</file>
+
+<file path="Backend/src/utils/sanitize.js">
+const sanitizeUsuario = (usuario) => {
+  if (!usuario) {
+    return usuario;
+  }
+
+  const { contrasena, ...safeUsuario } = usuario;
+  return safeUsuario;
+};
+
+module.exports = {
+  sanitizeUsuario,
+};
+</file>
+
+<file path="Frontend/index.html">
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dashboard administrativo para bar y restaurante con control de inventario, mesas y ventas."
+    />
+    <title>Bar Inventory OS</title>
+  </head>
+  <body class="bg-slate-950">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+  </html>
+</file>
+
+<file path="Frontend/package.json">
+{
+  "name": "inventory",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.13.2",
+    "framer-motion": "^12.23.24",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.9.6",
+    "recharts": "^3.3.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.1.12"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+</file>
+
+<file path="Frontend/postcss.config.js">
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+</file>
+
+<file path="Frontend/public/index.html">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+</file>
+
+<file path="Frontend/public/manifest.json">
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
+</file>
+
+<file path="Frontend/public/robots.txt">
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+</file>
+
+<file path="Frontend/README.md">
+# Frontend - Sistema de Inventario Bar/Restaurante
+
+Frontend administrativo profesional construido con React + Vite para operar un bar o restaurante con módulos de dashboard, inventario, mesas, cuentas, ventas y reportes.
+
+## Tecnologías
+
+- React
+- Vite
+- React Router DOM
+- Axios
+- TailwindCSS
+- Context API
+- React Icons
+- React Hot Toast
+- Recharts
+- Framer Motion
+
+## Instalación
+
+1. Entrar a la carpeta `Frontend`.
+2. Instalar dependencias:
+
+```bash
+npm install
+```
+
+3. Verificar el archivo `.env`:
+
+```env
+VITE_API_URL=http://localhost:3001/api
+```
+
+## Ejecución
+
+Modo desarrollo:
+
+```bash
+npm run dev
+```
+
+Build de producción:
+
+```bash
+npm run build
+```
+
+Vista previa del build:
+
+```bash
+npm run preview
+```
+
+## Estructura
+
+```text
+Frontend/
+├── public/
+├── src/
+│   ├── api/
+│   ├── assets/
+│   ├── components/
+│   │   ├── charts/
+│   │   ├── layout/
+│   │   └── ui/
+│   ├── context/
+│   ├── hooks/
+│   ├── pages/
+│   │   ├── auth/
+│   │   ├── categorias/
+│   │   ├── cuentas/
+│   │   ├── dashboard/
+│   │   ├── mesas/
+│   │   ├── productos/
+│   │   ├── reportes/
+│   │   └── ventas/
+│   ├── routes/
+│   ├── services/
+│   ├── styles/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── .env
+├── index.html
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.mjs
+└── package.json
+```
+
+## Backend esperado
+
+El frontend está preparado para consumir un backend Express en:
+
+```text
+http://localhost:3001/api
+```
+
+Endpoints utilizados:
+
+- `POST /auth/login`
+- `GET /auth/me`
+- `GET|POST|PUT|DELETE /productos`
+- `GET|POST|PUT|DELETE /categorias`
+- `GET|POST|PUT /mesas`
+- `GET|POST|PUT|DELETE /cuentas`
+- `GET|POST|DELETE /detalle-cuenta`
+
+## Funcionalidades incluidas
+
+- Login con persistencia de JWT en `localStorage`.
+- Rutas protegidas.
+- Sidebar responsive colapsable.
+- Navbar administrativa con búsqueda visual, notificaciones y perfil.
+- Dashboard con métricas y gráficas.
+- CRUD visual de productos con búsqueda, filtros, paginación y modal.
+- CRUD visual de categorías.
+- Vista POS de mesas con apertura y cierre de cuentas.
+- Módulo de ventas para agregar productos a cuentas abiertas y cerrar venta.
+- Reportes con datos reales cuando existen endpoints y fallback mock si faltan datos.
+- Toasters, loaders, estados vacíos y confirmaciones.
+
+## Notas
+
+- Si el backend no está levantado o el JWT no es válido, el usuario será redirigido al login.
+- El módulo de reportes puede usar datos mock automáticamente si alguna consulta falla.
+- Para una experiencia completa, asegúrate de que PostgreSQL, Prisma y el backend estén operativos.
+</file>
+
+<file path="Frontend/src/api/axios.js">
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3001/api",
+});
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+export default api;
+</file>
+
+<file path="Frontend/src/App.jsx">
+import AppRoutes from "./routes/AppRoutes";
+
+function App() {
+  return <AppRoutes />;
+}
+
+export default App;
+</file>
+
+<file path="Frontend/src/assets/.gitkeep">
+
+</file>
+
+<file path="Frontend/src/components/charts/SalesOverviewChart.jsx">
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+
+function SalesOverviewChart({ data }) {
+  return (
+    <div className="h-80">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart data={data}>
+          <defs>
+            <linearGradient id="salesGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#22d3ee" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#22d3ee" stopOpacity={0.02} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.12)" />
+          <XAxis dataKey="day" stroke="#64748b" />
+          <YAxis stroke="#64748b" />
+          <Tooltip
+            contentStyle={{
+              background: "#020617",
+              border: "1px solid rgba(148,163,184,0.14)",
+              borderRadius: "16px",
+            }}
+          />
+          <Area type="monotone" dataKey="total" stroke="#22d3ee" fill="url(#salesGradient)" strokeWidth={3} />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+export default SalesOverviewChart;
+</file>
+
+<file path="Frontend/src/components/charts/StatusPieChart.jsx">
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+
+const COLORS = ["#22d3ee", "#1e293b", "#0ea5e9", "#38bdf8"];
+
+function StatusPieChart({ data, dataKey = "value" }) {
+  return (
+    <div className="h-72">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            dataKey={dataKey}
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            innerRadius={64}
+            outerRadius={92}
+            paddingAngle={4}
+          >
+            {data.map((entry, index) => (
+              <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip
+            contentStyle={{
+              background: "#020617",
+              border: "1px solid rgba(148,163,184,0.14)",
+              borderRadius: "16px",
+            }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+export default StatusPieChart;
+</file>
+
+<file path="Frontend/src/components/layout/DashboardLayout.jsx">
+import { useState } from "react";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+
+function DashboardLayout({ children }) {
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-grid-radial bg-grid">
+      <Sidebar
+        collapsed={collapsed}
+        onToggle={() => setCollapsed((value) => !value)}
+        mobileOpen={mobileOpen}
+        onMobileClose={() => setMobileOpen(false)}
+      />
+      <div className={`min-h-screen transition-all duration-300 ${collapsed ? "lg:pl-24" : "lg:pl-72"}`}>
+        <main className="p-4 md:p-6 lg:p-8">
+          <Navbar onOpenSidebar={() => setMobileOpen(true)} />
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+}
+
+export default DashboardLayout;
+</file>
+
+<file path="Frontend/src/components/layout/Navbar.jsx">
+import { FiBell, FiMenu, FiSearch } from "react-icons/fi";
+import { useAuth } from "../../context/AuthContext";
+
+function Navbar({ onOpenSidebar }) {
+  const { user } = useAuth();
+
+  return (
+    <header className="sticky top-0 z-20 mb-6 flex flex-col gap-4 panel px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onOpenSidebar}
+          className="rounded-2xl border border-white/10 p-3 text-slate-300 transition hover:bg-white/5 lg:hidden"
+        >
+          <FiMenu />
+        </button>
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/70">Operaciones en vivo</p>
+          <h2 className="text-2xl font-semibold text-white">Panel administrativo</h2>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-3 md:flex-row md:items-center">
+        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-slate-400">
+          <FiSearch />
+          <input
+            type="text"
+            placeholder="Buscar productos, mesas o cuentas..."
+            className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500 md:w-80"
+          />
+        </div>
+        <button
+          type="button"
+          className="relative rounded-2xl border border-white/10 bg-slate-950/60 p-3 text-slate-300 transition hover:bg-white/5"
+        >
+          <FiBell />
+          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-cyan-400" />
+        </button>
+        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 text-sm font-semibold text-slate-950">
+            {user?.nombre?.slice(0, 2)?.toUpperCase() || "BI"}
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-white">{user?.nombre || "Usuario"}</p>
+            <p className="text-xs text-slate-400">{user?.rol || "rol"}</p>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default Navbar;
+</file>
+
+<file path="Frontend/src/components/layout/Sidebar.jsx">
+import { motion } from "framer-motion";
+import {
+  FiBarChart2,
+  FiBox,
+  FiClipboard,
+  FiGrid,
+  FiLayers,
+  FiLogOut,
+  FiMenu,
+  FiShoppingCart,
+  FiTag,
+  FiX,
+} from "react-icons/fi";
+import { NavLink } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+
+const navItems = [
+  { to: "/dashboard", label: "Dashboard", icon: FiGrid },
+  { to: "/productos", label: "Productos", icon: FiBox },
+  { to: "/categorias", label: "Categorías", icon: FiTag },
+  { to: "/inventario", label: "Inventario", icon: FiLayers },
+  { to: "/mesas", label: "Mesas", icon: FiGrid },
+  { to: "/cuentas", label: "Cuentas", icon: FiClipboard },
+  { to: "/ventas", label: "Ventas", icon: FiShoppingCart },
+  { to: "/reportes", label: "Reportes", icon: FiBarChart2 },
+];
+
+function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }) {
+  const { user, logout } = useAuth();
+
+  return (
+    <>
+      {mobileOpen ? (
+        <button
+          type="button"
+          className="fixed inset-0 z-30 bg-slate-950/70 lg:hidden"
+          onClick={onMobileClose}
+        />
+      ) : null}
+
+      <motion.aside
+        animate={{ width: collapsed ? 96 : 280 }}
+        className={`fixed left-0 top-0 z-40 flex h-screen flex-col border-r border-white/10 bg-slate-950/95 backdrop-blur-xl transition-transform duration-300 lg:translate-x-0 ${
+          mobileOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between px-5 py-5">
+          <div className={collapsed ? "hidden" : "block"}>
+            <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">Bar OS</p>
+            <h1 className="text-xl font-semibold text-white">Control Center</h1>
+          </div>
+          <button
+            type="button"
+            onClick={onToggle}
+            className="hidden rounded-2xl border border-white/10 p-2 text-slate-300 transition hover:bg-white/5 lg:block"
+          >
+            <FiMenu />
+          </button>
+          <button
+            type="button"
+            onClick={onMobileClose}
+            className="rounded-2xl border border-white/10 p-2 text-slate-300 transition hover:bg-white/5 lg:hidden"
+          >
+            <FiX />
+          </button>
+        </div>
+
+        <div className="px-4">
+          <div className="panel-soft flex items-center gap-3 p-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/20 text-sm font-semibold text-cyan-300">
+              {user?.nombre?.slice(0, 2)?.toUpperCase() || "BI"}
+            </div>
+            {!collapsed ? (
+              <div className="min-w-0">
+                <p className="truncate text-sm font-semibold text-white">{user?.nombre || "Invitado"}</p>
+                <p className="truncate text-xs text-slate-400">{user?.rol || "Sin rol"}</p>
+              </div>
+            ) : null}
+          </div>
+        </div>
+
+        <nav className="mt-6 flex-1 space-y-1 px-4">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              onClick={onMobileClose}
+              className={({ isActive }) =>
+                `group flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition ${
+                  isActive
+                    ? "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/20"
+                    : "text-slate-300 hover:bg-white/5 hover:text-white"
+                }`
+              }
+            >
+              <item.icon className="text-lg" />
+              {!collapsed ? <span>{item.label}</span> : null}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className="p-4">
+          <button
+            type="button"
+            onClick={logout}
+            className="flex w-full items-center justify-center gap-3 rounded-2xl border border-rose-400/20 bg-rose-500/10 px-4 py-3 text-sm font-medium text-rose-200 transition hover:bg-rose-500/20"
+          >
+            <FiLogOut />
+            {!collapsed ? <span>Cerrar sesión</span> : null}
+          </button>
+        </div>
+      </motion.aside>
+    </>
+  );
+}
+
+export default Sidebar;
+</file>
+
+<file path="Frontend/src/components/ui/Button.jsx">
+import { motion } from "framer-motion";
+
+const styles = {
+  primary:
+    "bg-cyan-500 text-slate-950 hover:bg-cyan-400 focus:ring-cyan-400/40",
+  secondary:
+    "bg-slate-800 text-slate-100 hover:bg-slate-700 focus:ring-slate-400/30",
+  danger:
+    "bg-rose-500/90 text-white hover:bg-rose-400 focus:ring-rose-400/40",
+  ghost:
+    "bg-transparent text-slate-300 hover:bg-white/5 focus:ring-slate-400/20 border border-white/10",
+};
+
+function Button({
+  children,
+  type = "button",
+  variant = "primary",
+  className = "",
+  loading = false,
+  icon: Icon,
+  ...props
+}) {
+  return (
+    <motion.button
+      whileTap={{ scale: 0.98 }}
+      type={type}
+      disabled={loading || props.disabled}
+      className={`inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-4 disabled:cursor-not-allowed disabled:opacity-60 ${styles[variant]} ${className}`}
+      {...props}
+    >
+      {loading ? (
+        <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+      ) : null}
+      {!loading && Icon ? <Icon className="text-base" /> : null}
+      <span>{children}</span>
+    </motion.button>
+  );
+}
+
+export default Button;
+</file>
+
+<file path="Frontend/src/components/ui/Card.jsx">
+import { motion } from "framer-motion";
+
+function Card({ children, className = "" }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+      className={`panel p-5 ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export default Card;
+</file>
+
+<file path="Frontend/src/components/ui/ConfirmModal.jsx">
+import { FiAlertTriangle } from "react-icons/fi";
+import Button from "./Button";
+import Modal from "./Modal";
+
+function ConfirmModal({
+  isOpen,
+  onClose,
+  onConfirm,
+  title = "Confirmar acción",
+  message = "Esta acción no se puede deshacer.",
+  confirmText = "Eliminar",
+  cancelText = "Cancelar",
+  loading = false,
+  tone = "danger",
+}) {
+  const toneStyles = {
+    danger: "bg-rose-500/15 text-rose-300",
+    warning: "bg-amber-500/15 text-amber-300",
+  };
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} title={title} size="max-w-lg" description="Confirma esta acción antes de continuar.">
+      <div className="space-y-6">
+        <div className="flex items-start gap-4">
+          <div className={`rounded-2xl p-3 ${toneStyles[tone] || toneStyles.danger}`}>
+            <FiAlertTriangle className="text-xl" />
+          </div>
+          <p className="text-sm leading-7 text-slate-300">{message}</p>
+        </div>
+        <div className="flex justify-end gap-3">
+          <Button variant="ghost" onClick={onClose}>
+            {cancelText}
+          </Button>
+          <Button variant="danger" onClick={onConfirm} loading={loading}>
+            {confirmText}
+          </Button>
+        </div>
+      </div>
+    </Modal>
+  );
+}
+
+export default ConfirmModal;
+</file>
+
+<file path="Frontend/src/components/ui/Input.jsx">
+function Input({ label, error, className = "", icon: Icon, ...props }) {
+  return (
+    <label className="block space-y-2">
+      {label ? <span className="text-sm font-medium text-slate-300">{label}</span> : null}
+      <div
+        className={`flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 transition focus-within:border-cyan-400/50 focus-within:ring-4 focus-within:ring-cyan-500/10 ${className}`}
+      >
+        {Icon ? <Icon className="text-slate-500" /> : null}
+        <input
+          className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500"
+          {...props}
+        />
+      </div>
+      {error ? <p className="text-xs text-rose-400">{error}</p> : null}
+    </label>
+  );
+}
+
+export default Input;
+</file>
+
+<file path="Frontend/src/components/ui/Loader.jsx">
+function Loader({ label = "Cargando..." }) {
+  return (
+    <div className="flex min-h-[220px] items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-cyan-500/20 border-t-cyan-400" />
+        <p className="text-sm text-slate-400">{label}</p>
+      </div>
+    </div>
+  );
+}
+
+export default Loader;
+</file>
+
+<file path="Frontend/src/components/ui/Modal.jsx">
+import { AnimatePresence, motion } from "framer-motion";
+import { FiX } from "react-icons/fi";
+
+function Modal({ isOpen, onClose, title, children, size = "max-w-2xl", description = "Gestiona la información con seguridad." }) {
+  return (
+    <AnimatePresence>
+      {isOpen ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.98 }}
+            className={`w-full ${size} panel overflow-hidden`}
+          >
+            <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+              <div>
+                <h3 className="text-lg font-semibold text-white">{title}</h3>
+                <p className="text-sm text-slate-400">{description}</p>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-xl border border-white/10 p-2 text-slate-400 transition hover:bg-white/5 hover:text-white"
+              >
+                <FiX />
+              </button>
+            </div>
+            <div className="p-6">{children}</div>
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}
+
+export default Modal;
+</file>
+
+<file path="Frontend/src/components/ui/Table.jsx">
+function Table({ columns, data, emptyMessage = "No hay registros para mostrar." }) {
+  return (
+    <div className="overflow-hidden rounded-3xl border border-white/10">
+      <div className="overflow-x-auto scrollbar-thin">
+        <table className="min-w-full divide-y divide-white/10">
+          <thead className="bg-slate-900/90">
+            <tr>
+              {columns.map((column) => (
+                <th
+                  key={column.key}
+                  className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.2em] text-slate-400"
+                >
+                  {column.title}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-white/5 bg-slate-950/50">
+            {data.length ? (
+              data.map((row, index) => (
+                <tr key={row.id || row.id_producto || row.id_categoria || row.id_mesa || row.id_cuenta || index}>
+                  {columns.map((column) => (
+                    <td key={column.key} className="px-4 py-3 text-sm text-slate-200">
+                      {column.render ? column.render(row) : row[column.key]}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={columns.length} className="px-4 py-10 text-center text-sm text-slate-500">
+                  {emptyMessage}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default Table;
+</file>
+
+<file path="Frontend/src/context/AuthContext.jsx">
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import toast from "react-hot-toast";
+import { getProfileRequest, loginRequest } from "../services/auth.service";
+
+const AuthContext = createContext(null);
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(() => {
+    try {
+      const storedUser = localStorage.getItem("user");
+      return storedUser ? JSON.parse(storedUser) : null;
+    } catch (error) {
+      localStorage.removeItem("user");
+      return null;
+    }
+  });
+  const [token, setToken] = useState(() => localStorage.getItem("token"));
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const bootstrap = async () => {
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await getProfileRequest();
+        const nextUser = response.user || response.data || null;
+
+        if (!nextUser) {
+          throw new Error("Perfil inválido.");
+        }
+
+        setUser(nextUser);
+        localStorage.setItem("user", JSON.stringify(nextUser));
+      } catch (error) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        setToken(null);
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    bootstrap();
+  }, [token]);
+
+  const login = async (credentials) => {
+    const response = await loginRequest(credentials);
+    const authToken = response.token || response.data?.token;
+    const authUser = response.user || response.data?.user || response.data?.usuario;
+
+    if (!authToken || !authUser) {
+      throw new Error("Respuesta de autenticación inválida.");
+    }
+
+    localStorage.setItem("token", authToken);
+    localStorage.setItem("user", JSON.stringify(authUser));
+    setToken(authToken);
+    setUser(authUser);
+    toast.success(`Bienvenido, ${authUser.nombre}`);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setToken(null);
+    setUser(null);
+    toast.success("Sesión cerrada");
+  };
+
+  const value = useMemo(
+    () => ({
+      user,
+      token,
+      isAuthenticated: Boolean(token),
+      loading,
+      login,
+      logout,
+    }),
+    [user, token, loading]
+  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
+
+export const useAuth = () => useContext(AuthContext);
+</file>
+
+<file path="Frontend/src/hooks/useAsyncAction.js">
+import { useState } from "react";
+import toast from "react-hot-toast";
+
+const getErrorMessage = (error, fallback = "Ocurrió un error inesperado.") =>
+  error?.response?.data?.message || error?.message || fallback;
+
+const useAsyncAction = () => {
+  const [loading, setLoading] = useState(false);
+
+  const execute = async (callback, options = {}) => {
+    const { successMessage, errorMessage } = options;
+
+    try {
+      setLoading(true);
+      const result = await callback();
+
+      if (successMessage) {
+        toast.success(successMessage);
+      }
+
+      return result;
+    } catch (error) {
+      toast.error(getErrorMessage(error, errorMessage));
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { execute, loading };
+};
+
+export default useAsyncAction;
+</file>
+
+<file path="Frontend/src/index.css">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-slate-800;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+    font-family: "Sora", "Segoe UI", sans-serif;
+    background-image: radial-gradient(circle at top, rgba(6, 182, 212, 0.14), transparent 28%);
+  }
+
+  ::selection {
+    @apply bg-cyan-500/30 text-white;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-3xl border border-white/10 bg-slate-900/70 backdrop-blur-xl shadow-glow;
+  }
+
+  .panel-soft {
+    @apply rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-md;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(34, 211, 238, 0.35) transparent;
+  }
+}
+</file>
+
+<file path="Frontend/src/main.jsx">
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import App from "./App";
+import { AuthProvider } from "./context/AuthContext";
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <App />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: "#0f172a",
+              color: "#e2e8f0",
+              border: "1px solid rgba(148, 163, 184, 0.2)",
+            },
+          }}
+        />
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>
+);
+</file>
+
+<file path="Frontend/src/pages/auth/Login.jsx">
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { FiLock, FiUser } from "react-icons/fi";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
+import { useAuth } from "../../context/AuthContext";
+
+function Login() {
+  const { login, isAuthenticated } = useAuth();
+  const [form, setForm] = useState({ usuario: "", contrasena: "" });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  const validate = () => {
+    const nextErrors = {};
+
+    if (!form.usuario.trim()) nextErrors.usuario = "Ingresa tu usuario.";
+    if (!form.contrasena.trim()) nextErrors.contrasena = "Ingresa tu contraseña.";
+
+    setErrors(nextErrors);
+    return !Object.keys(nextErrors).length;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!validate()) return;
+
+    try {
+      setLoading(true);
+      setErrors({});
+      await login({
+        usuario: form.usuario.trim(),
+        contrasena: form.contrasena,
+        "contraseña": form.contrasena,
+      });
+      navigate(location.state?.from?.pathname || "/dashboard", { replace: true });
+    } catch (error) {
+      setErrors((current) => ({
+        ...current,
+        api: error?.response?.data?.message || error?.message || "No fue posible iniciar sesión.",
+      }));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-950 px-4">
+      <div className="absolute inset-0 bg-grid-radial bg-grid opacity-70" />
+      <div className="absolute left-1/2 top-20 h-44 w-44 -translate-x-1/2 rounded-full bg-cyan-500/15 blur-3xl" />
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative panel w-full max-w-md p-8"
+      >
+        <div className="mb-8 text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-3xl bg-cyan-500/10 text-lg font-semibold text-cyan-300">
+            BI
+          </div>
+          <h1 className="text-2xl font-semibold text-white">BAR INVENTORY OS</h1>
+          <p className="mt-2 text-sm text-slate-400">Ingresa para acceder al panel.</p>
+        </div>
+
+        <form className="space-y-5" onSubmit={handleSubmit}>
+          <Input
+            label="Usuario"
+            placeholder="admin"
+            icon={FiUser}
+            value={form.usuario}
+            error={errors.usuario}
+            onChange={(event) => setForm((current) => ({ ...current, usuario: event.target.value }))}
+          />
+          <Input
+            label="Contraseña"
+            type="password"
+            placeholder="••••"
+            icon={FiLock}
+            value={form.contrasena}
+            error={errors.contrasena}
+            onChange={(event) => setForm((current) => ({ ...current, contrasena: event.target.value }))}
+          />
+          {errors.api ? <p className="text-sm text-rose-400">{errors.api}</p> : null}
+          <Button type="submit" loading={loading} className="w-full py-3">
+            Ingresar
+          </Button>
+        </form>
+      </motion.div>
+    </div>
+  );
+}
+
+export default Login;
+</file>
+
+<file path="Frontend/src/pages/categorias/Categorias.jsx">
+import { useEffect, useState } from "react";
+import { FiEdit2, FiPlus, FiTrash2 } from "react-icons/fi";
+import Button from "../../components/ui/Button";
+import Card from "../../components/ui/Card";
+import ConfirmModal from "../../components/ui/ConfirmModal";
+import Input from "../../components/ui/Input";
+import Loader from "../../components/ui/Loader";
+import Modal from "../../components/ui/Modal";
+import Table from "../../components/ui/Table";
+import { useAuth } from "../../context/AuthContext";
+import useAsyncAction from "../../hooks/useAsyncAction";
+import { createCategoria, deleteCategoria, getCategorias, updateCategoria } from "../../services/categorias.service";
+
+const initialForm = { nombre_categoria: "" };
+
+function Categorias() {
+  const { user } = useAuth();
+  const isAdmin = user?.rol === "admin";
+  const [categorias, setCategorias] = useState([]);
+  const [loadingPage, setLoadingPage] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [form, setForm] = useState(initialForm);
+  const [confirmState, setConfirmState] = useState({ open: false, categoria: null });
+  const { execute, loading } = useAsyncAction();
+
+  const loadCategorias = async () => {
+    const response = await getCategorias();
+    setCategorias(response.data || []);
+  };
+
+  useEffect(() => {
+    loadCategorias().finally(() => setLoadingPage(false));
+  }, []);
+
+  const openCreate = () => {
+    setEditing(null);
+    setForm(initialForm);
+    setIsOpen(true);
+  };
+
+  const openEdit = (categoria) => {
+    setEditing(categoria);
+    setForm({ nombre_categoria: categoria.nombre_categoria });
+    setIsOpen(true);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    await execute(
+      async () => {
+        if (editing) {
+          await updateCategoria(editing.id_categoria, form);
+        } else {
+          await createCategoria(form);
+        }
+        await loadCategorias();
+        setIsOpen(false);
+      },
+      { successMessage: editing ? "Categoría actualizada." : "Categoría creada." }
+    );
+  };
+
+  const confirmDelete = async () => {
+    if (!confirmState.categoria) return;
+
+    await execute(
+      async () => {
+        await deleteCategoria(confirmState.categoria.id_categoria);
+        await loadCategorias();
+        setConfirmState({ open: false, categoria: null });
+      },
+      { successMessage: "Categoría eliminada." }
+    );
+  };
+
+  if (loadingPage) return <Loader label="Cargando categorías..." />;
+
+  return (
+    <div className="space-y-6">
+      <Card className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-sm text-slate-400">Gestión base</p>
+          <h1 className="text-2xl font-semibold text-white">Categorías</h1>
+        </div>
+        <Button icon={FiPlus} onClick={openCreate}>
+          Nueva categoría
+        </Button>
+      </Card>
+
+      <Card>
+        <Table
+          columns={[
+            { key: "nombre_categoria", title: "Nombre" },
+            {
+              key: "productos",
+              title: "Productos",
+              render: (row) => row.productos?.length || 0,
+            },
+            {
+              key: "actions",
+              title: "Acciones",
+              render: (row) => (
+                <div className="flex gap-2">
+                  <Button variant="secondary" className="px-3 py-2" icon={FiEdit2} onClick={() => openEdit(row)}>
+                    Editar
+                  </Button>
+                  {isAdmin ? (
+                    <Button
+                      variant="danger"
+                      className="px-3 py-2"
+                      icon={FiTrash2}
+                      onClick={() => setConfirmState({ open: true, categoria: row })}
+                    >
+                      Eliminar
+                    </Button>
+                  ) : null}
+                </div>
+              ),
+            },
+          ]}
+          data={categorias}
+          emptyMessage="Aún no hay categorías registradas."
+        />
+      </Card>
+
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title={editing ? "Editar categoría" : "Nueva categoría"}>
+        <form className="space-y-5" onSubmit={handleSubmit}>
+          <Input
+            label="Nombre de la categoría"
+            value={form.nombre_categoria}
+            onChange={(event) => setForm({ nombre_categoria: event.target.value })}
+          />
+          <div className="flex justify-end gap-3">
+            <Button variant="ghost" onClick={() => setIsOpen(false)}>
+              Cancelar
+            </Button>
+            <Button type="submit" loading={loading}>
+              {editing ? "Guardar cambios" : "Crear categoría"}
+            </Button>
+          </div>
+        </form>
+      </Modal>
+
+      <ConfirmModal
+        isOpen={confirmState.open}
+        onClose={() => setConfirmState({ open: false, categoria: null })}
+        onConfirm={confirmDelete}
+        loading={loading}
+        title="Eliminar categoría"
+        message={`Se eliminará la categoría "${confirmState.categoria?.nombre_categoria || ""}".`}
+      />
+    </div>
+  );
+}
+
+export default Categorias;
+</file>
+
+<file path="Frontend/src/pages/cuentas/Cuentas.jsx">
+import { useEffect, useMemo, useState } from "react";
+import { FiEye, FiTrash2 } from "react-icons/fi";
+import Button from "../../components/ui/Button";
+import Card from "../../components/ui/Card";
+import ConfirmModal from "../../components/ui/ConfirmModal";
+import Loader from "../../components/ui/Loader";
+import Modal from "../../components/ui/Modal";
+import Table from "../../components/ui/Table";
+import { useAuth } from "../../context/AuthContext";
+import useAsyncAction from "../../hooks/useAsyncAction";
+import { deleteCuenta, getCuentas, updateCuenta } from "../../services/cuentas.service";
+
+function Cuentas() {
+  const { user } = useAuth();
+  const isAdmin = user?.rol === "admin";
+  const [cuentas, setCuentas] = useState([]);
+  const [loadingPage, setLoadingPage] = useState(true);
+  const [selectedCuenta, setSelectedCuenta] = useState(null);
+  const [confirmState, setConfirmState] = useState({ open: false, cuenta: null });
+  const { execute, loading } = useAsyncAction();
+
+  const loadCuentas = async () => {
+    const response = await getCuentas();
+    setCuentas(response.data || []);
+  };
+
+  useEffect(() => {
+    loadCuentas().finally(() => setLoadingPage(false));
+  }, []);
+
+  const resumen = useMemo(
+    () => ({
+      abiertas: cuentas.filter((item) => item.estado === "abierta").length,
+      cerradas: cuentas.filter((item) => item.estado === "cerrada").length,
+      total: cuentas.reduce((acc, item) => acc + Number(item.total || 0), 0),
+    }),
+    [cuentas]
+  );
+
+  const closeCuenta = async (cuenta) => {
+    await execute(
+      async () => {
+        await updateCuenta(cuenta.id_cuenta, { estado: "cerrada" });
+        await loadCuentas();
+      },
+      { successMessage: "Cuenta cerrada." }
+    );
+  };
+
+  const removeCuenta = async () => {
+    if (!confirmState.cuenta) return;
+
+    await execute(
+      async () => {
+        await deleteCuenta(confirmState.cuenta.id_cuenta);
+        await loadCuentas();
+        setConfirmState({ open: false, cuenta: null });
+      },
+      { successMessage: "Cuenta eliminada." }
+    );
+  };
+
+  if (loadingPage) return <Loader label="Cargando cuentas..." />;
+
+  return (
+    <div className="space-y-6">
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <p className="text-sm text-slate-400">Cuentas abiertas</p>
+          <p className="mt-2 text-3xl font-semibold text-cyan-300">{resumen.abiertas}</p>
+        </Card>
+        <Card>
+          <p className="text-sm text-slate-400">Cuentas cerradas</p>
+          <p className="mt-2 text-3xl font-semibold text-emerald-300">{resumen.cerradas}</p>
+        </Card>
+        <Card>
+          <p className="text-sm text-slate-400">Facturación acumulada</p>
+          <p className="mt-2 text-3xl font-semibold text-white">${resumen.total.toFixed(2)}</p>
+        </Card>
+      </div>
+
+      <Card>
+        <Table
+          columns={[
+            {
+              key: "mesa",
+              title: "Mesa",
+              render: (row) => (
+                <div>
+                  <p className="font-medium text-white">Mesa {row.mesa?.numero_mesa}</p>
+                  <p className="text-xs text-slate-500">Cuenta #{row.id_cuenta}</p>
+                </div>
+              ),
+            },
+            {
+              key: "empleado",
+              title: "Atendió",
+              render: (row) => row.empleado?.nombre || "Sin asignar",
+            },
+            {
+              key: "estado",
+              title: "Estado",
+              render: (row) => (
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-medium ${
+                    row.estado === "abierta" ? "bg-cyan-500/15 text-cyan-300" : "bg-emerald-500/15 text-emerald-300"
+                  }`}
+                >
+                  {row.estado}
+                </span>
+              ),
+            },
+            {
+              key: "total",
+              title: "Total",
+              render: (row) => `$${Number(row.total).toFixed(2)}`,
+            },
+            {
+              key: "actions",
+              title: "Acciones",
+              render: (row) => (
+                <div className="flex flex-wrap gap-2">
+                  <Button variant="secondary" className="px-3 py-2" icon={FiEye} onClick={() => setSelectedCuenta(row)}>
+                    Ver
+                  </Button>
+                  {row.estado === "abierta" ? (
+                    <Button className="px-3 py-2" onClick={() => closeCuenta(row)} loading={loading}>
+                      Cerrar
+                    </Button>
+                  ) : null}
+                  {isAdmin ? (
+                    <Button
+                      variant="danger"
+                      className="px-3 py-2"
+                      icon={FiTrash2}
+                      onClick={() => setConfirmState({ open: true, cuenta: row })}
+                    >
+                      Eliminar
+                    </Button>
+                  ) : null}
+                </div>
+              ),
+            },
+          ]}
+          data={cuentas}
+          emptyMessage="Aún no hay cuentas registradas."
+        />
+      </Card>
+
+      <Modal isOpen={Boolean(selectedCuenta)} onClose={() => setSelectedCuenta(null)} title="Detalle de cuenta">
+        {selectedCuenta ? (
+          <div className="space-y-5">
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="panel-soft p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Mesa</p>
+                <p className="mt-2 text-xl font-semibold text-white">{selectedCuenta.mesa?.numero_mesa}</p>
+              </div>
+              <div className="panel-soft p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Estado</p>
+                <p className="mt-2 text-xl font-semibold text-white">{selectedCuenta.estado}</p>
+              </div>
+              <div className="panel-soft p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Total</p>
+                <p className="mt-2 text-xl font-semibold text-white">${Number(selectedCuenta.total).toFixed(2)}</p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {selectedCuenta.detalles?.length ? (
+                selectedCuenta.detalles.map((detalle) => (
+                  <div key={detalle.id_detalle} className="panel-soft flex items-center justify-between p-4">
+                    <div>
+                      <p className="font-medium text-white">{detalle.producto?.nombre}</p>
+                      <p className="text-sm text-slate-400">
+                        {detalle.cantidad} x ${Number(detalle.precio_unitario).toFixed(2)}
+                      </p>
+                    </div>
+                    <p className="font-semibold text-white">${Number(detalle.subtotal).toFixed(2)}</p>
+                  </div>
+                ))
+              ) : (
+                <div className="panel-soft p-8 text-center text-slate-400">La cuenta todavía no tiene productos.</div>
+              )}
+            </div>
+          </div>
+        ) : null}
+      </Modal>
+
+      <ConfirmModal
+        isOpen={confirmState.open}
+        onClose={() => setConfirmState({ open: false, cuenta: null })}
+        onConfirm={removeCuenta}
+        loading={loading}
+        title="Eliminar cuenta"
+        message="La cuenta y sus detalles se removerán del sistema. Si estaba abierta, el stock será revertido automáticamente."
+      />
+    </div>
+  );
+}
+
+export default Cuentas;
+</file>
+
+<file path="Frontend/src/pages/dashboard/Dashboard.jsx">
+import { useEffect, useState } from "react";
+import { FiAlertTriangle, FiDollarSign, FiShoppingBag, FiUsers } from "react-icons/fi";
+import Card from "../../components/ui/Card";
+import Loader from "../../components/ui/Loader";
+import SalesOverviewChart from "../../components/charts/SalesOverviewChart";
+import StatusPieChart from "../../components/charts/StatusPieChart";
+import { getDashboardMetrics } from "../../services/dashboard.service";
+import { getReportes } from "../../services/reportes.service";
+
+function Dashboard() {
+  const [loading, setLoading] = useState(true);
+  const [metrics, setMetrics] = useState(null);
+  const [reportes, setReportes] = useState(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [dashboardData, reportesData] = await Promise.all([getDashboardMetrics(), getReportes()]);
+        setMetrics(dashboardData);
+        setReportes(reportesData);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (loading) {
+    return <Loader label="Construyendo dashboard ejecutivo..." />;
+  }
+
+  const summaryCards = [
+    {
+      label: "Ingresos totales",
+      value: `$${metrics.summary.totalRevenue.toFixed(2)}`,
+      icon: FiDollarSign,
+    },
+    {
+      label: "Ventas del día",
+      value: `$${metrics.summary.dailyRevenue.toFixed(2)}`,
+      icon: FiShoppingBag,
+    },
+    {
+      label: "Mesas ocupadas",
+      value: metrics.summary.occupiedTables,
+      icon: FiUsers,
+    },
+    {
+      label: "Stock bajo",
+      value: metrics.summary.lowStockCount,
+      icon: FiAlertTriangle,
+    },
+  ];
+
+  return (
+    <div className="space-y-6">
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {summaryCards.map((card) => (
+          <Card key={card.label} className="overflow-hidden">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-slate-400">{card.label}</p>
+                <h3 className="mt-3 text-3xl font-semibold text-white">{card.value}</h3>
+              </div>
+              <div className="rounded-2xl bg-cyan-500/10 p-3 text-cyan-300">
+                <card.icon className="text-xl" />
+              </div>
+            </div>
+          </Card>
+        ))}
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[1.6fr_1fr]">
+        <Card>
+          <div className="mb-5">
+            <p className="text-sm text-slate-400">Rendimiento</p>
+            <h3 className="text-xl font-semibold text-white">Ventas de la semana</h3>
+          </div>
+          <SalesOverviewChart data={reportes.dailySales} />
+        </Card>
+        <Card>
+          <div className="mb-5">
+            <p className="text-sm text-slate-400">Distribución</p>
+            <h3 className="text-xl font-semibold text-white">Estado de cuentas</h3>
+          </div>
+          <StatusPieChart data={reportes.incomeByState} />
+          <div className="grid grid-cols-2 gap-3">
+            {reportes.incomeByState.map((item) => (
+              <div key={item.name} className="panel-soft p-3">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{item.name}</p>
+                <p className="mt-2 text-xl font-semibold text-white">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </section>
+
+      <section className="grid gap-6 lg:grid-cols-2">
+        <Card>
+          <div className="mb-5 flex items-center justify-between">
+            <div>
+              <p className="text-sm text-slate-400">Atención inmediata</p>
+              <h3 className="text-xl font-semibold text-white">Productos con stock bajo</h3>
+            </div>
+          </div>
+          <div className="space-y-3">
+            {reportes.lowStock.length ? (
+              reportes.lowStock.map((item) => (
+                <div key={item.nombre} className="panel-soft flex items-center justify-between p-4">
+                  <div>
+                    <p className="font-medium text-white">{item.nombre}</p>
+                    <p className="text-sm text-slate-400">Minimo sugerido: {item.minimo}</p>
+                  </div>
+                  <span className="rounded-full bg-rose-500/10 px-3 py-1 text-sm font-medium text-rose-300">
+                    Stock: {item.stock}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <div className="panel-soft p-8 text-center text-slate-400">Todo el inventario está por encima del mínimo.</div>
+            )}
+          </div>
+        </Card>
+
+        <Card>
+          <div className="mb-5">
+            <p className="text-sm text-slate-400">Top sellers</p>
+            <h3 className="text-xl font-semibold text-white">Productos más vendidos</h3>
+          </div>
+          <div className="space-y-3">
+            {reportes.topProducts.map((item, index) => (
+              <div key={item.name} className="panel-soft flex items-center justify-between p-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-300">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <p className="font-medium text-white">{item.name}</p>
+                    <p className="text-sm text-slate-400">Rotación destacada</p>
+                  </div>
+                </div>
+                <span className="text-lg font-semibold text-white">{item.sales}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </section>
+    </div>
+  );
+}
+
+export default Dashboard;
+</file>
+
+<file path="Frontend/src/pages/mesas/Mesas.jsx">
+import { useEffect, useState } from "react";
+import { FiCheckCircle, FiCoffee, FiPlus, FiTrash2 } from "react-icons/fi";
+import Button from "../../components/ui/Button";
+import Card from "../../components/ui/Card";
+import ConfirmModal from "../../components/ui/ConfirmModal";
+import Input from "../../components/ui/Input";
+import Loader from "../../components/ui/Loader";
+import Modal from "../../components/ui/Modal";
+import { useAuth } from "../../context/AuthContext";
+import useAsyncAction from "../../hooks/useAsyncAction";
+import { createCuenta, getCuentas, updateCuenta } from "../../services/cuentas.service";
+import { createMesa, deleteMesa, getMesas } from "../../services/mesas.service";
+
+function Mesas() {
+  const { user } = useAuth();
+  const isAdmin = user?.rol === "admin";
+  const [mesas, setMesas] = useState([]);
+  const [cuentas, setCuentas] = useState([]);
+  const [loadingPage, setLoadingPage] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [numeroMesa, setNumeroMesa] = useState("");
+  const [confirmState, setConfirmState] = useState({ open: false, mesa: null });
+  const { execute, loading } = useAsyncAction();
+
+  const loadData = async () => {
+    const [mesasRes, cuentasRes] = await Promise.all([getMesas(), getCuentas()]);
+    setMesas(mesasRes.data || []);
+    setCuentas(cuentasRes.data || []);
+  };
+
+  useEffect(() => {
+    loadData().finally(() => setLoadingPage(false));
+  }, []);
+
+  const handleCreateMesa = async (event) => {
+    event.preventDefault();
+    await execute(
+      async () => {
+        await createMesa({ numero_mesa: Number(numeroMesa) });
+        setNumeroMesa("");
+        setIsOpen(false);
+        await loadData();
+      },
+      { successMessage: "Mesa creada correctamente." }
+    );
+  };
+
+  const handleOpenCuenta = async (mesa) => {
+    await execute(
+      async () => {
+        await createCuenta({ id_mesa: mesa.id_mesa, id_empleado: user.id_usuario });
+        await loadData();
+      },
+      { successMessage: `Cuenta abierta para mesa ${mesa.numero_mesa}.` }
+    );
+  };
+
+  const handleCloseCuenta = async (cuenta) => {
+    await execute(
+      async () => {
+        await updateCuenta(cuenta.id_cuenta, { estado: "cerrada" });
+        await loadData();
+      },
+      { successMessage: `Cuenta de mesa ${cuenta.mesa?.numero_mesa} cerrada.` }
+    );
+  };
+
+  const handleDeleteMesa = async () => {
+    if (!confirmState.mesa) return;
+
+    await execute(
+      async () => {
+        await deleteMesa(confirmState.mesa.id_mesa);
+        await loadData();
+        setConfirmState({ open: false, mesa: null });
+      },
+      { successMessage: "Mesa eliminada." }
+    );
+  };
+
+  if (loadingPage) return <Loader label="Cargando mapa de mesas..." />;
+
+  return (
+    <div className="space-y-6">
+      <Card className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-sm text-slate-400">Vista POS</p>
+          <h1 className="text-2xl font-semibold text-white">Mesas</h1>
+        </div>
+        <Button icon={FiPlus} onClick={() => setIsOpen(true)}>
+          Agregar mesa
+        </Button>
+      </Card>
+
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        {mesas.map((mesa) => {
+          const cuentaAbierta = cuentas.find((item) => item.id_mesa === mesa.id_mesa && item.estado === "abierta");
+          const occupied = mesa.estado === "ocupada";
+
+          return (
+            <Card key={mesa.id_mesa} className={`border ${occupied ? "border-cyan-400/30" : "border-emerald-400/20"} overflow-hidden`}>
+              <div className="mb-6 flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-slate-400">Mesa</p>
+                  <h3 className="text-3xl font-semibold text-white">{mesa.numero_mesa}</h3>
+                </div>
+                <div
+                  className={`rounded-2xl p-3 ${
+                    occupied ? "bg-cyan-500/15 text-cyan-300" : "bg-emerald-500/15 text-emerald-300"
+                  }`}
+                >
+                  {occupied ? <FiCoffee className="text-xl" /> : <FiCheckCircle className="text-xl" />}
+                </div>
+              </div>
+
+              <div className="mb-6 flex items-center justify-between rounded-2xl bg-slate-950/50 p-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Estado</p>
+                  <p className={`mt-2 font-medium ${occupied ? "text-cyan-300" : "text-emerald-300"}`}>
+                    {occupied ? "Ocupada" : "Libre"}
+                  </p>
+                </div>
+                {cuentaAbierta ? (
+                  <div className="text-right">
+                    <p className="text-xs text-slate-500">Cuenta activa</p>
+                    <p className="mt-2 text-lg font-semibold text-white">${Number(cuentaAbierta.total).toFixed(2)}</p>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="space-y-2">
+                {cuentaAbierta ? (
+                  <Button variant="secondary" className="w-full" onClick={() => handleCloseCuenta(cuentaAbierta)}>
+                    Cerrar cuenta
+                  </Button>
+                ) : (
+                  <Button className="w-full" onClick={() => handleOpenCuenta(mesa)}>
+                    Abrir cuenta
+                  </Button>
+                )}
+                {isAdmin ? (
+                  <Button
+                    variant="danger"
+                    className="w-full"
+                    icon={FiTrash2}
+                    onClick={() => setConfirmState({ open: true, mesa })}
+                  >
+                    Eliminar mesa
+                  </Button>
+                ) : null}
+              </div>
+            </Card>
+          );
+        })}
+      </div>
+
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Agregar mesa" size="max-w-lg">
+        <form className="space-y-5" onSubmit={handleCreateMesa}>
+          <Input
+            label="Número de mesa"
+            type="number"
+            min="1"
+            value={numeroMesa}
+            onChange={(event) => setNumeroMesa(event.target.value)}
+          />
+          <div className="flex justify-end gap-3">
+            <Button variant="ghost" onClick={() => setIsOpen(false)}>
+              Cancelar
+            </Button>
+            <Button type="submit" loading={loading}>
+              Crear mesa
+            </Button>
+          </div>
+        </form>
+      </Modal>
+
+      <ConfirmModal
+        isOpen={confirmState.open}
+        onClose={() => setConfirmState({ open: false, mesa: null })}
+        onConfirm={handleDeleteMesa}
+        loading={loading}
+        title="Eliminar mesa"
+        message={`La mesa ${confirmState.mesa?.numero_mesa || ""} se eliminará si no tiene cuentas activas asociadas.`}
+      />
+    </div>
+  );
+}
+
+export default Mesas;
+</file>
+
+<file path="Frontend/src/pages/productos/Productos.jsx">
+import { useEffect, useMemo, useRef, useState } from "react";
+import { FiEdit2, FiEye, FiFilter, FiPackage, FiPlus, FiSearch, FiTrash2, FiUploadCloud } from "react-icons/fi";
+import toast from "react-hot-toast";
+import Button from "../../components/ui/Button";
+import Card from "../../components/ui/Card";
+import ConfirmModal from "../../components/ui/ConfirmModal";
+import Input from "../../components/ui/Input";
+import Loader from "../../components/ui/Loader";
+import Modal from "../../components/ui/Modal";
+import Table from "../../components/ui/Table";
+import { useAuth } from "../../context/AuthContext";
+import useAsyncAction from "../../hooks/useAsyncAction";
+import { getCategorias } from "../../services/categorias.service";
+import {
+  createProducto,
+  deleteProducto,
+  deleteProductoImagen,
+  getProductos,
+  updateProducto,
+  updateProductoImagen,
+  uploadProductoImagenes,
+} from "../../services/productos.service";
+
+const initialForm = {
+  nombre: "",
+  precio_venta: "",
+  stock: "",
+  stock_minimo: "",
+  id_categoria: "",
+};
+
+const placeholderImage =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="260" viewBox="0 0 400 260">
+      <rect width="400" height="260" fill="#0f172a"/>
+      <rect x="24" y="24" width="352" height="212" rx="24" fill="#111827" stroke="#1e293b"/>
+      <circle cx="148" cy="116" r="28" fill="#164e63"/>
+      <path d="M72 196l74-68 54 48 42-38 86 58H72z" fill="#155e75"/>
+      <text x="200" y="224" font-family="Arial" font-size="20" fill="#67e8f9" text-anchor="middle">BAR INVENTORY</text>
+    </svg>
+  `);
+
+function Productos({ inventoryMode = false }) {
+  const { user } = useAuth();
+  const isAdmin = user?.rol === "admin";
+  const [productos, setProductos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [loadingPage, setLoadingPage] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [form, setForm] = useState(initialForm);
+  const [search, setSearch] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+  const [page, setPage] = useState(1);
+  const [pendingFiles, setPendingFiles] = useState([]);
+  const [previewImage, setPreviewImage] = useState(null);
+  const [confirmState, setConfirmState] = useState({ open: false, type: null, payload: null });
+  const [imageToReplace, setImageToReplace] = useState(null);
+  const fileInputRef = useRef(null);
+  const imageReplaceInputRef = useRef(null);
+  const { execute, loading } = useAsyncAction();
+
+  const pageSize = 7;
+
+  const loadData = async () => {
+    const [productosRes, categoriasRes] = await Promise.all([getProductos(), getCategorias()]);
+    const nextProductos = productosRes.data || [];
+    setProductos(nextProductos);
+    setCategorias(categoriasRes.data || []);
+    return nextProductos;
+  };
+
+  useEffect(() => {
+    loadData().finally(() => setLoadingPage(false));
+  }, []);
+
+  const filtered = useMemo(() => {
+    return productos.filter((item) => {
+      const matchesSearch = item.nombre.toLowerCase().includes(search.toLowerCase());
+      const matchesCategory =
+        categoryFilter === "all" ? true : String(item.id_categoria) === String(categoryFilter);
+      return matchesSearch && matchesCategory;
+    });
+  }, [productos, search, categoryFilter]);
+
+  const paginated = useMemo(() => {
+    const start = (page - 1) * pageSize;
+    return filtered.slice(start, start + pageSize);
+  }, [filtered, page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search, categoryFilter]);
+
+  const productModalImages = editing ? [...(editing.imagenes || []), ...pendingFiles] : pendingFiles;
+
+  const openCreate = () => {
+    setEditing(null);
+    setForm(initialForm);
+    setPendingFiles([]);
+    setIsOpen(true);
+  };
+
+  const openEdit = (producto) => {
+    setEditing(producto);
+    setForm({
+      nombre: producto.nombre,
+      precio_venta: producto.precio_venta,
+      stock: producto.stock,
+      stock_minimo: producto.stock_minimo,
+      id_categoria: producto.id_categoria,
+    });
+    setPendingFiles([]);
+    setIsOpen(true);
+  };
+
+  const handleFilesSelected = (files) => {
+    const nextFiles = [...files]
+      .filter((file) => file.type.startsWith("image/"))
+      .map((file) => ({
+        file,
+        name: file.name,
+        preview: URL.createObjectURL(file),
+        isTemp: true,
+      }));
+
+    if (!nextFiles.length) {
+      toast.error("Solo se permiten imágenes.");
+      return;
+    }
+
+    setPendingFiles((current) => [...current, ...nextFiles]);
+  };
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+    handleFilesSelected(event.dataTransfer.files);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const payload = {
+      ...form,
+      precio_venta: Number(form.precio_venta),
+      stock: Number(form.stock),
+      stock_minimo: Number(form.stock_minimo),
+      id_categoria: Number(form.id_categoria),
+    };
+
+    await execute(
+      async () => {
+        let productId = editing?.id_producto;
+
+        if (editing) {
+          const updated = await updateProducto(editing.id_producto, payload);
+          productId = updated.data.id_producto;
+        } else {
+          const created = await createProducto(payload);
+          productId = created.data.id_producto;
+        }
+
+        if (pendingFiles.length && productId) {
+          await uploadProductoImagenes(
+            productId,
+            pendingFiles.map((item) => item.file)
+          );
+        }
+
+        await loadData();
+        setPendingFiles([]);
+        setIsOpen(false);
+      },
+      { successMessage: editing ? "Producto actualizado." : "Producto creado." }
+    );
+  };
+
+  const confirmDelete = async () => {
+    if (!confirmState.payload) return;
+
+    if (confirmState.type === "producto") {
+      await execute(
+        async () => {
+          await deleteProducto(confirmState.payload.id_producto);
+          await loadData();
+          setConfirmState({ open: false, type: null, payload: null });
+        },
+        { successMessage: "Producto eliminado." }
+      );
+    }
+
+    if (confirmState.type === "imagen") {
+      await execute(
+        async () => {
+          await deleteProductoImagen(confirmState.payload.id_imagen);
+          const nextProductos = await loadData();
+          const freshProduct = nextProductos.find((item) => item.id_producto === editing?.id_producto);
+          if (freshProduct) setEditing(freshProduct);
+          setConfirmState({ open: false, type: null, payload: null });
+        },
+        { successMessage: "Imagen eliminada." }
+      );
+    }
+  };
+
+  const handleReplaceImage = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file || !imageToReplace) return;
+
+    await execute(
+      async () => {
+        await updateProductoImagen(imageToReplace.id_imagen, file);
+        const nextProductos = await loadData();
+        const freshProduct = nextProductos.find((item) => item.id_producto === editing?.id_producto);
+        if (freshProduct) setEditing(freshProduct);
+        setImageToReplace(null);
+      },
+      { successMessage: "Imagen actualizada." }
+    );
+
+    event.target.value = "";
+  };
+
+  if (loadingPage) return <Loader label="Sincronizando productos..." />;
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+
+  return (
+    <div className="space-y-6">
+      <Card className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+        <div>
+          <p className="text-sm text-slate-400">{inventoryMode ? "Control de inventario" : "Catálogo comercial"}</p>
+          <h1 className="text-2xl font-semibold text-white">{inventoryMode ? "Inventario" : "Productos"}</h1>
+        </div>
+        <div className="flex flex-col gap-3 md:flex-row">
+          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-slate-400">
+            <FiSearch />
+            <input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Buscar producto..."
+              className="w-full bg-transparent text-sm text-slate-100 outline-none md:w-60"
+            />
+          </div>
+          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-slate-400">
+            <FiFilter />
+            <select
+              value={categoryFilter}
+              onChange={(event) => setCategoryFilter(event.target.value)}
+              className="bg-transparent text-sm text-slate-100 outline-none"
+            >
+              <option value="all">Todas las categorías</option>
+              {categorias.map((categoria) => (
+                <option key={categoria.id_categoria} value={categoria.id_categoria}>
+                  {categoria.nombre_categoria}
+                </option>
+              ))}
+            </select>
+          </div>
+          <Button icon={FiPlus} onClick={openCreate}>
+            Nuevo producto
+          </Button>
+        </div>
+      </Card>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <p className="text-sm text-slate-400">Productos visibles</p>
+          <p className="mt-2 text-3xl font-semibold text-white">{filtered.length}</p>
+        </Card>
+        <Card>
+          <p className="text-sm text-slate-400">Stock bajo</p>
+          <p className="mt-2 text-3xl font-semibold text-amber-300">
+            {productos.filter((item) => Number(item.stock) <= Number(item.stock_minimo)).length}
+          </p>
+        </Card>
+        <Card>
+          <p className="text-sm text-slate-400">Valor estimado</p>
+          <p className="mt-2 text-3xl font-semibold text-cyan-300">
+            $
+            {productos
+              .reduce((acc, item) => acc + Number(item.stock || 0) * Number(item.precio_venta || 0), 0)
+              .toFixed(2)}
+          </p>
+        </Card>
+      </div>
+
+      <Card>
+        <Table
+          columns={[
+            {
+              key: "nombre",
+              title: "Producto",
+              render: (row) => (
+                <div className="flex items-center gap-3">
+                  <img
+                    src={row.imagenes?.[0]?.url_imagen ? `http://localhost:3001${row.imagenes[0].url_imagen}` : placeholderImage}
+                    alt={row.nombre}
+                    className="h-14 w-14 rounded-2xl object-cover"
+                  />
+                  <div>
+                    <p className="font-medium text-white">{row.nombre}</p>
+                    <p className="text-xs text-slate-500">{row.categoria?.nombre_categoria || "Sin categoría"}</p>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              key: "precio_venta",
+              title: "Precio",
+              render: (row) => `$${Number(row.precio_venta).toFixed(2)}`,
+            },
+            {
+              key: "stock",
+              title: "Stock",
+              render: (row) => (
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-medium ${
+                    Number(row.stock) <= Number(row.stock_minimo)
+                      ? "bg-amber-500/15 text-amber-300"
+                      : "bg-emerald-500/15 text-emerald-300"
+                  }`}
+                >
+                  {row.stock} uds
+                </span>
+              ),
+            },
+            {
+              key: "imagenes",
+              title: "Imágenes",
+              render: (row) => row.imagenes?.length || 0,
+            },
+            {
+              key: "actions",
+              title: "Acciones",
+              render: (row) => (
+                <div className="flex flex-wrap gap-2">
+                  <Button variant="secondary" className="px-3 py-2" icon={FiEdit2} onClick={() => openEdit(row)}>
+                    Editar
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    className="px-3 py-2"
+                    icon={FiEye}
+                    onClick={() =>
+                      setPreviewImage(
+                        row.imagenes?.[0]?.url_imagen ? `http://localhost:3001${row.imagenes[0].url_imagen}` : placeholderImage
+                      )
+                    }
+                  >
+                    Ver
+                  </Button>
+                  {isAdmin ? (
+                    <Button
+                      variant="danger"
+                      className="px-3 py-2"
+                      icon={FiTrash2}
+                      onClick={() => setConfirmState({ open: true, type: "producto", payload: row })}
+                    >
+                      Eliminar
+                    </Button>
+                  ) : null}
+                </div>
+              ),
+            },
+          ]}
+          data={paginated}
+          emptyMessage="No hay productos que coincidan con tus filtros."
+        />
+        <div className="mt-5 flex items-center justify-between">
+          <p className="text-sm text-slate-400">
+            Página {page} de {totalPages}
+          </p>
+          <div className="flex gap-2">
+            <Button variant="ghost" disabled={page === 1} onClick={() => setPage((value) => Math.max(1, value - 1))}>
+              Anterior
+            </Button>
+            <Button
+              variant="ghost"
+              disabled={page === totalPages}
+              onClick={() => setPage((value) => Math.min(totalPages, value + 1))}
+            >
+              Siguiente
+            </Button>
+          </div>
+        </div>
+      </Card>
+
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title={editing ? "Editar producto" : "Nuevo producto"} size="max-w-4xl">
+        <form className="grid gap-6 lg:grid-cols-[1fr_1.1fr]" onSubmit={handleSubmit}>
+          <div className="space-y-4">
+            <Input
+              label="Nombre"
+              value={form.nombre}
+              onChange={(event) => setForm((current) => ({ ...current, nombre: event.target.value }))}
+            />
+            <Input
+              label="Precio de venta"
+              type="number"
+              min="0"
+              step="0.01"
+              value={form.precio_venta}
+              onChange={(event) => setForm((current) => ({ ...current, precio_venta: event.target.value }))}
+            />
+            <Input
+              label="Stock"
+              type="number"
+              min="0"
+              value={form.stock}
+              onChange={(event) => setForm((current) => ({ ...current, stock: event.target.value }))}
+            />
+            <Input
+              label="Stock mínimo"
+              type="number"
+              min="0"
+              value={form.stock_minimo}
+              onChange={(event) => setForm((current) => ({ ...current, stock_minimo: event.target.value }))}
+            />
+            <label className="block space-y-2">
+              <span className="text-sm font-medium text-slate-300">Categoría</span>
+              <select
+                value={form.id_categoria}
+                onChange={(event) => setForm((current) => ({ ...current, id_categoria: event.target.value }))}
+                className="w-full rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none"
+              >
+                <option value="">Selecciona una categoría</option>
+                {categorias.map((categoria) => (
+                  <option key={categoria.id_categoria} value={categoria.id_categoria}>
+                    {categoria.nombre_categoria}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <div className="space-y-4">
+            <div
+              onDrop={handleDrop}
+              onDragOver={(event) => event.preventDefault()}
+              onClick={() => fileInputRef.current?.click()}
+              className="flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-3xl border border-dashed border-cyan-400/30 bg-slate-950/50 p-6 text-center transition hover:border-cyan-300/50 hover:bg-slate-900/60"
+            >
+              <FiUploadCloud className="mb-3 text-3xl text-cyan-300" />
+              <p className="font-medium text-white">Arrastra imágenes aquí o haz clic para subir</p>
+              <p className="mt-2 text-sm text-slate-400">Puedes cargar múltiples imágenes por producto.</p>
+              <input
+                ref={fileInputRef}
+                type="file"
+                multiple
+                accept="image/*"
+                className="hidden"
+                onChange={(event) => handleFilesSelected(event.target.files)}
+              />
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {productModalImages.length ? (
+                productModalImages.map((image, index) => {
+                  const src = image.url_imagen ? `http://localhost:3001${image.url_imagen}` : image.preview;
+
+                  return (
+                    <div key={image.id_imagen || `${image.name}-${index}`} className="panel-soft overflow-hidden">
+                      <img src={src || placeholderImage} alt="Producto" className="h-36 w-full object-cover" />
+                      <div className="flex items-center justify-between p-3">
+                        <button
+                          type="button"
+                          onClick={() => setPreviewImage(src || placeholderImage)}
+                          className="text-sm text-cyan-300 transition hover:text-cyan-200"
+                        >
+                          Vista previa
+                        </button>
+                        {!image.isTemp && isAdmin ? (
+                          <div className="flex gap-2">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setImageToReplace(image);
+                                imageReplaceInputRef.current?.click();
+                              }}
+                              className="text-sm text-slate-300 transition hover:text-white"
+                            >
+                              Reemplazar
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setConfirmState({ open: true, type: "imagen", payload: image })}
+                              className="text-sm text-rose-300 transition hover:text-rose-200"
+                            >
+                              Eliminar
+                            </button>
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="panel-soft flex min-h-36 items-center justify-center p-6 text-center text-sm text-slate-400 sm:col-span-2">
+                  Este producto aún no tiene imágenes. Se mostrará una imagen por defecto.
+                </div>
+              )}
+            </div>
+            <input
+              ref={imageReplaceInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleReplaceImage}
+            />
+          </div>
+
+          <div className="flex justify-end gap-3 lg:col-span-2">
+            <Button variant="ghost" onClick={() => setIsOpen(false)}>
+              Cancelar
+            </Button>
+            <Button type="submit" loading={loading}>
+              {editing ? "Guardar cambios" : "Crear producto"}
+            </Button>
+          </div>
+        </form>
+      </Modal>
+
+      <Modal isOpen={Boolean(previewImage)} onClose={() => setPreviewImage(null)} title="Vista previa de imagen" size="max-w-3xl">
+        <img src={previewImage || placeholderImage} alt="Vista previa" className="max-h-[70vh] w-full rounded-3xl object-cover" />
+      </Modal>
+
+      <ConfirmModal
+        isOpen={confirmState.open}
+        onClose={() => setConfirmState({ open: false, type: null, payload: null })}
+        onConfirm={confirmDelete}
+        loading={loading}
+        title={confirmState.type === "imagen" ? "Eliminar imagen" : "Eliminar producto"}
+        message={
+          confirmState.type === "imagen"
+            ? "La imagen se eliminará del producto de forma permanente."
+            : `Se eliminará el producto "${confirmState.payload?.nombre || ""}" del sistema.`
+        }
+      />
+    </div>
+  );
+}
+
+export default Productos;
+</file>
+
+<file path="Frontend/src/pages/reportes/Reportes.jsx">
+import { useEffect, useState } from "react";
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import SalesOverviewChart from "../../components/charts/SalesOverviewChart";
+import StatusPieChart from "../../components/charts/StatusPieChart";
+import Card from "../../components/ui/Card";
+import Loader from "../../components/ui/Loader";
+import { getReportes } from "../../services/reportes.service";
+
+function Reportes() {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    getReportes()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <Loader label="Compilando reportes..." />;
+
+  return (
+    <div className="space-y-6">
+      <div className="grid gap-6 xl:grid-cols-[1.4fr_1fr]">
+        <Card>
+          <div className="mb-5">
+            <p className="text-sm text-slate-400">Histórico</p>
+            <h1 className="text-2xl font-semibold text-white">Ventas diarias</h1>
+          </div>
+          <SalesOverviewChart data={data.dailySales} />
+        </Card>
+
+        <Card>
+          <div className="mb-5">
+            <p className="text-sm text-slate-400">Actividad</p>
+            <h2 className="text-2xl font-semibold text-white">Estado de ingresos</h2>
+          </div>
+          <StatusPieChart data={data.incomeByState} />
+        </Card>
+      </div>
+
+      <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+        <Card>
+          <div className="mb-5">
+            <p className="text-sm text-slate-400">Top performance</p>
+            <h2 className="text-2xl font-semibold text-white">Productos más vendidos</h2>
+          </div>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={data.topProducts}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.12)" />
+                <XAxis dataKey="name" stroke="#64748b" />
+                <YAxis stroke="#64748b" />
+                <Tooltip
+                  contentStyle={{
+                    background: "#020617",
+                    border: "1px solid rgba(148,163,184,0.14)",
+                    borderRadius: "16px",
+                  }}
+                />
+                <Bar dataKey="sales" radius={[10, 10, 0, 0]} fill="#22d3ee" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </Card>
+
+        <Card>
+          <div className="mb-5">
+            <p className="text-sm text-slate-400">Acción rápida</p>
+            <h2 className="text-2xl font-semibold text-white">Alertas de stock</h2>
+          </div>
+          <div className="space-y-3">
+            {data.lowStock.length ? (
+              data.lowStock.map((item) => (
+                <div key={item.nombre} className="panel-soft p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium text-white">{item.nombre}</p>
+                      <p className="text-sm text-slate-400">Minimo sugerido: {item.minimo}</p>
+                    </div>
+                    <span className="rounded-full bg-amber-500/15 px-3 py-1 text-sm font-medium text-amber-300">
+                      {item.stock}
+                    </span>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="panel-soft p-8 text-center text-slate-400">No hay alertas de stock bajo por ahora.</div>
+            )}
+          </div>
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+export default Reportes;
+</file>
+
+<file path="Frontend/src/pages/ventas/Ventas.jsx">
+import { useEffect, useMemo, useState } from "react";
+import { FiPlusCircle, FiShoppingCart, FiTrash2 } from "react-icons/fi";
+import Button from "../../components/ui/Button";
+import Card from "../../components/ui/Card";
+import ConfirmModal from "../../components/ui/ConfirmModal";
+import Loader from "../../components/ui/Loader";
+import { useAuth } from "../../context/AuthContext";
+import useAsyncAction from "../../hooks/useAsyncAction";
+import { createDetalleCuenta, deleteDetalleCuenta, getCuentas, updateCuenta } from "../../services/cuentas.service";
+import { getProductos } from "../../services/productos.service";
+
+function Ventas() {
+  const { user } = useAuth();
+  const isAdmin = user?.rol === "admin";
+  const [cuentas, setCuentas] = useState([]);
+  const [productos, setProductos] = useState([]);
+  const [selectedCuentaId, setSelectedCuentaId] = useState("");
+  const [selectedProductoId, setSelectedProductoId] = useState("");
+  const [cantidad, setCantidad] = useState(1);
+  const [loadingPage, setLoadingPage] = useState(true);
+  const [confirmState, setConfirmState] = useState({ open: false, detalleId: null });
+  const { execute, loading } = useAsyncAction();
+
+  const loadData = async () => {
+    const [cuentasRes, productosRes] = await Promise.all([getCuentas(), getProductos()]);
+    setCuentas((cuentasRes.data || []).filter((item) => item.estado === "abierta"));
+    setProductos((productosRes.data || []).filter((item) => item.estado));
+  };
+
+  useEffect(() => {
+    loadData().finally(() => setLoadingPage(false));
+  }, []);
+
+  const selectedCuenta = useMemo(
+    () => cuentas.find((item) => String(item.id_cuenta) === String(selectedCuentaId)),
+    [cuentas, selectedCuentaId]
+  );
+
+  const selectedProducto = useMemo(
+    () => productos.find((item) => String(item.id_producto) === String(selectedProductoId)),
+    [productos, selectedProductoId]
+  );
+
+  const handleAddProduct = async () => {
+    if (!selectedCuentaId || !selectedProductoId) return;
+
+    await execute(
+      async () => {
+        await createDetalleCuenta({
+          id_cuenta: Number(selectedCuentaId),
+          id_producto: Number(selectedProductoId),
+          cantidad: Number(cantidad),
+          precio_unitario: Number(selectedProducto.precio_venta),
+        });
+        await loadData();
+      },
+      { successMessage: "Producto agregado a la cuenta." }
+    );
+  };
+
+  const handleDeleteItem = async () => {
+    if (!confirmState.detalleId) return;
+
+    await execute(
+      async () => {
+        await deleteDetalleCuenta(confirmState.detalleId);
+        await loadData();
+        setConfirmState({ open: false, detalleId: null });
+      },
+      { successMessage: "Producto retirado de la cuenta." }
+    );
+  };
+
+  const handleCloseSale = async () => {
+    if (!selectedCuenta) return;
+
+    await execute(
+      async () => {
+        await updateCuenta(selectedCuenta.id_cuenta, { estado: "cerrada" });
+        setSelectedCuentaId("");
+        await loadData();
+      },
+      { successMessage: "Venta cerrada correctamente." }
+    );
+  };
+
+  if (loadingPage) return <Loader label="Preparando módulo POS..." />;
+
+  return (
+    <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+      <Card className="space-y-5">
+        <div>
+          <p className="text-sm text-slate-400">POS en vivo</p>
+          <h1 className="text-2xl font-semibold text-white">Ventas y consumo</h1>
+        </div>
+
+        <label className="block space-y-2">
+          <span className="text-sm font-medium text-slate-300">Cuenta activa</span>
+          <select
+            value={selectedCuentaId}
+            onChange={(event) => setSelectedCuentaId(event.target.value)}
+            className="w-full rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none"
+          >
+            <option value="">Selecciona una cuenta abierta</option>
+            {cuentas.map((cuenta) => (
+              <option key={cuenta.id_cuenta} value={cuenta.id_cuenta}>
+                Mesa {cuenta.mesa?.numero_mesa} - Cuenta #{cuenta.id_cuenta}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="block space-y-2">
+          <span className="text-sm font-medium text-slate-300">Producto</span>
+          <select
+            value={selectedProductoId}
+            onChange={(event) => setSelectedProductoId(event.target.value)}
+            className="w-full rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none"
+          >
+            <option value="">Selecciona un producto</option>
+            {productos.map((producto) => (
+              <option key={producto.id_producto} value={producto.id_producto}>
+                {producto.nombre} - ${Number(producto.precio_venta).toFixed(2)}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="block space-y-2">
+          <span className="text-sm font-medium text-slate-300">Cantidad</span>
+          <input
+            type="number"
+            min="1"
+            value={cantidad}
+            onChange={(event) => setCantidad(event.target.value)}
+            className="w-full rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none"
+          />
+        </label>
+
+        <Button className="w-full" icon={FiPlusCircle} onClick={handleAddProduct} loading={loading}>
+          Agregar producto
+        </Button>
+
+        {selectedProducto ? (
+          <div className="panel-soft p-4">
+            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Vista previa</p>
+            <div className="mt-3 flex items-center justify-between">
+              <div>
+                <p className="font-medium text-white">{selectedProducto.nombre}</p>
+                <p className="text-sm text-slate-400">Stock disponible: {selectedProducto.stock}</p>
+              </div>
+              <p className="text-lg font-semibold text-cyan-300">
+                ${(Number(selectedProducto.precio_venta) * Number(cantidad || 1)).toFixed(2)}
+              </p>
+            </div>
+          </div>
+        ) : null}
+      </Card>
+
+      <Card className="space-y-5">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-slate-400">Detalle operativo</p>
+            <h2 className="text-2xl font-semibold text-white">
+              {selectedCuenta ? `Mesa ${selectedCuenta.mesa?.numero_mesa}` : "Selecciona una cuenta"}
+            </h2>
+          </div>
+          <div className="rounded-2xl bg-cyan-500/10 p-3 text-cyan-300">
+            <FiShoppingCart className="text-xl" />
+          </div>
+        </div>
+
+        {selectedCuenta ? (
+          <>
+            <div className="space-y-3">
+              {selectedCuenta.detalles?.length ? (
+                selectedCuenta.detalles.map((detalle) => (
+                  <div key={detalle.id_detalle} className="panel-soft flex items-center justify-between p-4">
+                    <div>
+                      <p className="font-medium text-white">{detalle.producto?.nombre}</p>
+                      <p className="text-sm text-slate-400">
+                        {detalle.cantidad} x ${Number(detalle.precio_unitario).toFixed(2)}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <p className="font-semibold text-white">${Number(detalle.subtotal).toFixed(2)}</p>
+                      {isAdmin ? (
+                        <button
+                          type="button"
+                          onClick={() => setConfirmState({ open: true, detalleId: detalle.id_detalle })}
+                          className="rounded-xl border border-rose-400/20 p-2 text-rose-300 transition hover:bg-rose-500/10"
+                        >
+                          <FiTrash2 />
+                        </button>
+                      ) : null}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="panel-soft p-10 text-center text-slate-400">Esta cuenta todavía no tiene productos.</div>
+              )}
+            </div>
+
+            <div className="panel-soft flex items-center justify-between p-5">
+              <div>
+                <p className="text-sm text-slate-400">Total actual</p>
+                <p className="mt-2 text-3xl font-semibold text-white">${Number(selectedCuenta.total).toFixed(2)}</p>
+              </div>
+              <Button onClick={handleCloseSale} loading={loading}>
+                Cerrar venta
+              </Button>
+            </div>
+          </>
+        ) : (
+          <div className="panel-soft p-10 text-center text-slate-400">
+            Selecciona una cuenta abierta para empezar a agregar productos.
+          </div>
+        )}
+      </Card>
+
+      <ConfirmModal
+        isOpen={confirmState.open}
+        onClose={() => setConfirmState({ open: false, detalleId: null })}
+        onConfirm={handleDeleteItem}
+        loading={loading}
+        title="Eliminar ítem de venta"
+        message="El producto se retirará de la cuenta y el stock será restaurado automáticamente."
+      />
+    </div>
+  );
+}
+
+export default Ventas;
+</file>
+
+<file path="Frontend/src/routes/AppRoutes.jsx">
+import { Navigate, Route, Routes } from "react-router-dom";
+import DashboardLayout from "../components/layout/DashboardLayout";
+import Categorias from "../pages/categorias/Categorias";
+import Cuentas from "../pages/cuentas/Cuentas";
+import Dashboard from "../pages/dashboard/Dashboard";
+import Login from "../pages/auth/Login";
+import Mesas from "../pages/mesas/Mesas";
+import Productos from "../pages/productos/Productos";
+import Reportes from "../pages/reportes/Reportes";
+import Ventas from "../pages/ventas/Ventas";
+import ProtectedRoute from "./ProtectedRoute";
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route
+          path="/dashboard"
+          element={
+            <DashboardLayout>
+              <Dashboard />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/productos"
+          element={
+            <DashboardLayout>
+              <Productos />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/categorias"
+          element={
+            <DashboardLayout>
+              <Categorias />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/inventario"
+          element={
+            <DashboardLayout>
+              <Productos inventoryMode />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/mesas"
+          element={
+            <DashboardLayout>
+              <Mesas />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/cuentas"
+          element={
+            <DashboardLayout>
+              <Cuentas />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/ventas"
+          element={
+            <DashboardLayout>
+              <Ventas />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/reportes"
+          element={
+            <DashboardLayout>
+              <Reportes />
+            </DashboardLayout>
+          }
+        />
+      </Route>
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+    </Routes>
+  );
+}
+
+export default AppRoutes;
+</file>
+
+<file path="Frontend/src/routes/ProtectedRoute.jsx">
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import Loader from "../components/ui/Loader";
+import { useAuth } from "../context/AuthContext";
+
+function ProtectedRoute() {
+  const { isAuthenticated, loading } = useAuth();
+  const location = useLocation();
+
+  if (loading) {
+    return <Loader label="Validando sesión..." />;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return <Outlet />;
+}
+
+export default ProtectedRoute;
+</file>
+
+<file path="Frontend/src/services/auth.service.js">
+import api from "../api/axios";
+
+export const loginRequest = async (credentials) => {
+  const response = await api.post("/auth/login", credentials);
+  return response.data;
+};
+
+export const getProfileRequest = async () => {
+  const response = await api.get("/auth/me");
+  return response.data;
+};
+</file>
+
+<file path="Frontend/src/services/categorias.service.js">
+import api from "../api/axios";
+
+export const getCategorias = async () => {
+  const response = await api.get("/categorias");
+  return response.data;
+};
+
+export const createCategoria = async (payload) => {
+  const response = await api.post("/categorias", payload);
+  return response.data;
+};
+
+export const updateCategoria = async (id, payload) => {
+  const response = await api.put(`/categorias/${id}`, payload);
+  return response.data;
+};
+
+export const deleteCategoria = async (id) => {
+  const response = await api.delete(`/categorias/${id}`);
+  return response.data;
+};
+</file>
+
+<file path="Frontend/src/services/cuentas.service.js">
+import api from "../api/axios";
+
+export const getCuentas = async () => {
+  const response = await api.get("/cuentas");
+  return response.data;
+};
+
+export const createCuenta = async (payload) => {
+  const response = await api.post("/cuentas", payload);
+  return response.data;
+};
+
+export const updateCuenta = async (id, payload) => {
+  const response = await api.put(`/cuentas/${id}`, payload);
+  return response.data;
+};
+
+export const deleteCuenta = async (id) => {
+  const response = await api.delete(`/cuentas/${id}`);
+  return response.data;
+};
+
+export const getDetalleCuenta = async () => {
+  const response = await api.get("/detalle-cuenta");
+  return response.data;
+};
+
+export const createDetalleCuenta = async (payload) => {
+  const response = await api.post("/detalle-cuenta", payload);
+  return response.data;
+};
+
+export const deleteDetalleCuenta = async (id) => {
+  const response = await api.delete(`/detalle-cuenta/${id}`);
+  return response.data;
+};
+</file>
+
+<file path="Frontend/src/services/dashboard.service.js">
+import { getProductos } from "./productos.service";
+import { getMesas } from "./mesas.service";
+import { getCuentas } from "./cuentas.service";
+
+export const getDashboardMetrics = async () => {
+  const [productosRes, mesasRes, cuentasRes] = await Promise.all([
+    getProductos(),
+    getMesas(),
+    getCuentas(),
+  ]);
+
+  const productos = productosRes.data || [];
+  const mesas = mesasRes.data || [];
+  const cuentas = cuentasRes.data || [];
+
+  const lowStock = productos.filter((item) => Number(item.stock) <= Number(item.stock_minimo));
+  const openAccounts = cuentas.filter((item) => item.estado === "abierta");
+  const dailySales = cuentas.filter((item) => {
+    const closeDate = item.fecha_cierre ? new Date(item.fecha_cierre) : null;
+    const today = new Date();
+    return (
+      closeDate &&
+      closeDate.getDate() === today.getDate() &&
+      closeDate.getMonth() === today.getMonth() &&
+      closeDate.getFullYear() === today.getFullYear()
+    );
+  });
+
+  const totalRevenue = cuentas.reduce((acc, item) => acc + Number(item.total || 0), 0);
+
+  return {
+    productos,
+    mesas,
+    cuentas,
+    summary: {
+      totalProductos: productos.length,
+      lowStockCount: lowStock.length,
+      occupiedTables: mesas.filter((item) => item.estado === "ocupada").length,
+      openAccounts: openAccounts.length,
+      totalRevenue,
+      dailyRevenue: dailySales.reduce((acc, item) => acc + Number(item.total || 0), 0),
+    },
+  };
+};
+</file>
+
+<file path="Frontend/src/services/mesas.service.js">
+import api from "../api/axios";
+
+export const getMesas = async () => {
+  const response = await api.get("/mesas");
+  return response.data;
+};
+
+export const createMesa = async (payload) => {
+  const response = await api.post("/mesas", payload);
+  return response.data;
+};
+
+export const updateMesa = async (id, payload) => {
+  const response = await api.put(`/mesas/${id}`, payload);
+  return response.data;
+};
+
+export const deleteMesa = async (id) => {
+  const response = await api.delete(`/mesas/${id}`);
+  return response.data;
+};
+</file>
+
+<file path="Frontend/src/services/productos.service.js">
+import api from "../api/axios";
+
+export const getProductos = async () => {
+  const response = await api.get("/productos");
+  return response.data;
+};
+
+export const createProducto = async (payload) => {
+  const response = await api.post("/productos", payload);
+  return response.data;
+};
+
+export const updateProducto = async (id, payload) => {
+  const response = await api.put(`/productos/${id}`, payload);
+  return response.data;
+};
+
+export const deleteProducto = async (id) => {
+  const response = await api.delete(`/productos/${id}`);
+  return response.data;
+};
+
+export const getProductoImagenes = async (productId) => {
+  const response = await api.get(`/productos/${productId}/imagenes`);
+  return response.data;
+};
+
+export const uploadProductoImagenes = async (productId, files) => {
+  const formData = new FormData();
+  [...files].forEach((file) => formData.append("imagenes", file));
+  const response = await api.post(`/productos/${productId}/imagenes`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return response.data;
+};
+
+export const updateProductoImagen = async (imageId, file) => {
+  const formData = new FormData();
+  formData.append("imagen", file);
+  const response = await api.put(`/productos/imagenes/${imageId}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return response.data;
+};
+
+export const deleteProductoImagen = async (imageId) => {
+  const response = await api.delete(`/productos/imagenes/${imageId}`);
+  return response.data;
+};
+</file>
+
+<file path="Frontend/src/services/reportes.service.js">
+import { getProductos } from "./productos.service";
+import { getCuentas, getDetalleCuenta } from "./cuentas.service";
+
+const buildMockReports = () => ({
+  dailySales: [
+    { day: "Lun", total: 320 },
+    { day: "Mar", total: 510 },
+    { day: "Mie", total: 450 },
+    { day: "Jue", total: 680 },
+    { day: "Vie", total: 910 },
+    { day: "Sab", total: 1120 },
+    { day: "Dom", total: 760 },
+  ],
+  topProducts: [
+    { name: "Mojito", sales: 44 },
+    { name: "Hamburguesa", sales: 31 },
+    { name: "Cerveza IPA", sales: 29 },
+    { name: "Papas Bravas", sales: 25 },
+  ],
+  incomeByState: [
+    { name: "Cerradas", value: 72 },
+    { name: "Abiertas", value: 28 },
+  ],
+  lowStock: [],
+});
+
+export const getReportes = async () => {
+  try {
+    const [productosRes, cuentasRes, detalleRes] = await Promise.all([
+      getProductos(),
+      getCuentas(),
+      getDetalleCuenta(),
+    ]);
+
+    const productos = productosRes.data || [];
+    const cuentas = cuentasRes.data || [];
+    const detalles = detalleRes.data || [];
+
+    const lowStock = productos
+      .filter((item) => Number(item.stock) <= Number(item.stock_minimo))
+      .map((item) => ({
+        nombre: item.nombre,
+        stock: item.stock,
+        minimo: item.stock_minimo,
+      }));
+
+    const dailyMap = new Map();
+    cuentas
+      .filter((item) => item.fecha_cierre)
+      .forEach((item) => {
+        const day = new Date(item.fecha_cierre).toLocaleDateString("es-CO", { weekday: "short" });
+        dailyMap.set(day, (dailyMap.get(day) || 0) + Number(item.total || 0));
+      });
+
+    const productSalesMap = new Map();
+    detalles.forEach((item) => {
+      const productName = item.producto?.nombre || `Producto ${item.id_producto}`;
+      productSalesMap.set(productName, (productSalesMap.get(productName) || 0) + Number(item.cantidad || 0));
+    });
+
+    return {
+      dailySales:
+        [...dailyMap.entries()].map(([day, total]) => ({ day, total })) || buildMockReports().dailySales,
+      topProducts:
+        [...productSalesMap.entries()]
+          .map(([name, sales]) => ({ name, sales }))
+          .sort((a, b) => b.sales - a.sales)
+          .slice(0, 5) || buildMockReports().topProducts,
+      incomeByState: [
+        { name: "Cerradas", value: cuentas.filter((item) => item.estado === "cerrada").length },
+        { name: "Abiertas", value: cuentas.filter((item) => item.estado === "abierta").length },
+      ],
+      lowStock,
+    };
+  } catch (error) {
+    return buildMockReports();
+  }
+};
+</file>
+
+<file path="Frontend/src/styles/.gitkeep">
+
+</file>
+
+<file path="Frontend/tailwind.config.js">
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  theme: {
+    extend: {
+      colors: {
+        slate: {
+          925: "#0b1220",
+          950: "#020617",
+        },
+        accent: {
+          400: "#22d3ee",
+          500: "#06b6d4",
+          600: "#0891b2",
+        },
+      },
+      boxShadow: {
+        glow: "0 0 0 1px rgba(34,211,238,0.16), 0 20px 45px rgba(2,6,23,0.45)",
+      },
+      backgroundImage: {
+        "grid-radial":
+          "radial-gradient(circle at top, rgba(34,211,238,0.12), transparent 35%), linear-gradient(to right, rgba(148,163,184,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(148,163,184,0.08) 1px, transparent 1px)",
+      },
+      backgroundSize: {
+        grid: "100% 100%, 36px 36px, 36px 36px",
+      },
+      animation: {
+        float: "float 5s ease-in-out infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+      },
+    },
+  },
+  plugins: [],
+};
+</file>
+
+<file path="Frontend/vite.config.mjs">
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5173,
+    host: "0.0.0.0",
+  },
+});
+</file>
+
+</files>

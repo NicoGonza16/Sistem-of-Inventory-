@@ -14,8 +14,8 @@ import { createMesa, deleteMesa, getMesas } from "../../services/mesas.service";
 function Mesas() {
   const { user } = useAuth();
   const isAdmin = user?.rol === "admin";
-  const [mesas, setMesas] = useState([]);
-  const [cuentas, setCuentas] = useState([]);
+  const [mesas, setMesas] = useState();
+  const [cuentas, setCuentas] = useState();
   const [loadingPage, setLoadingPage] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [numeroMesa, setNumeroMesa] = useState("");
@@ -78,7 +78,9 @@ function Mesas() {
     );
   };
 
-  if (loadingPage) return <Loader label="Cargando mapa de mesas..." />;
+  if (loadingPage || !mesas || !cuentas) {
+  return <Loader label="Cargando mapa de mesas..." />;
+  }
 
   return (
     <div className="space-y-6">
@@ -87,13 +89,18 @@ function Mesas() {
           <p className="text-sm text-slate-400">Vista POS</p>
           <h1 className="text-2xl font-semibold text-white">Mesas</h1>
         </div>
-        <Button icon={FiPlus} onClick={() => setIsOpen(true)}>
-          Agregar mesa
-        </Button>
+        {isAdmin && (
+          <Button
+            icon={FiPlus}
+            onClick={() => setIsOpen(true)}
+          >
+            Agregar mesa
+          </Button>
+        )}
       </Card>
 
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-        {mesas.map((mesa) => {
+        {mesas?.map((mesa) => {
           const cuentaAbierta = cuentas.find((item) => item.id_mesa === mesa.id_mesa && item.estado === "abierta");
           const occupied = mesa.estado === "ocupada";
 

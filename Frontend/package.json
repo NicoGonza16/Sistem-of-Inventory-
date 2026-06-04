@@ -15,7 +15,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "doctor": "npx react-doctor@latest"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.0",

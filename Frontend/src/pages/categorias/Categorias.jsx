@@ -16,7 +16,7 @@ const initialForm = { nombre_categoria: "" };
 function Categorias() {
   const { user } = useAuth();
   const isAdmin = user?.rol === "admin";
-  const [categorias, setCategorias] = useState([]);
+  const [categorias, setCategorias] = useState();
   const [loadingPage, setLoadingPage] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [editing, setEditing] = useState(null);
@@ -75,7 +75,11 @@ function Categorias() {
     );
   };
 
-  if (loadingPage) return <Loader label="Cargando categorías..." />;
+  if (loadingPage || !categorias) {
+  return (
+    <Loader label="Cargando categorías..." />
+  );
+}
 
   return (
     <div className="space-y-6">
@@ -120,7 +124,7 @@ function Categorias() {
               ),
             },
           ]}
-          data={categorias}
+          data={categorias || []}
           emptyMessage="Aún no hay categorías registradas."
         />
       </Card>

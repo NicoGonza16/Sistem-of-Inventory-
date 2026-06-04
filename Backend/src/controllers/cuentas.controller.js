@@ -177,7 +177,10 @@ const updateCuenta = asyncHandler(async (req, res) => {
       mesaId = Number(id_mesa);
     }
 
-    if (id_empleado !== undefined && Number(id_empleado) !== existing.id_empleado) {
+    if (
+      id_empleado !== undefined &&
+      Number(id_empleado) !== existing.id_empleado
+    ) {
       const empleado = await tx.usuario.findFirst({
         where: {
           id_usuario: Number(id_empleado),
@@ -230,6 +233,11 @@ const updateCuenta = asyncHandler(async (req, res) => {
   sendResponse(res, 200, "Cuenta actualizada correctamente.", cuenta);
 });
 
+/**
+ * ELIMINAR CUENTA
+ * SOLO ADMIN
+ * REVERSA STOCK SI LA CUENTA ESTÁ ABIERTA
+ */
 const deleteCuenta = asyncHandler(async (req, res) => {
   const id = Number(req.params.id);
 
@@ -249,33 +257,52 @@ const deleteCuenta = asyncHandler(async (req, res) => {
     throw new AppError("Cuenta no encontrada.", 404);
   }
 
+  /**
+   * IMPORTANTE:
+   * Las cuentas cerradas NO deberían eliminarse
+   * porque afectan auditoría/reportes.
+   */
+  if (
+  existing.estado === "cerrada" &&
+  req.user?.rol !== "admin"
+  ) {
+  throw new AppError(
+    "Solo un administrador puede eliminar cuentas cerradas.",
+    403
+  );
+    }
+
   const cuenta = await prisma.$transaction(async (tx) => {
+    /**
+     * REVERSAR INVENTARIO
+     */
     if (existing.estado === "abierta") {
       for (const detalle of existing.detalles) {
-        const producto = await tx.producto.findUnique({
-          where: { id_producto: detalle.id_producto },
+        await tx.producto.update({
+          where: {
+            id_producto: detalle.id_producto,
+          },
+          data: {
+            stock: {
+              increment: detalle.cantidad,
+            },
+          },
         });
 
-        if (producto) {
-          await tx.producto.update({
-            where: { id_producto: detalle.id_producto },
-            data: {
-              stock: producto.stock + detalle.cantidad,
-            },
-          });
-
-          await tx.movimientoInventario.create({
-            data: {
-              id_producto: detalle.id_producto,
-              tipo_movimiento: "entrada",
-              cantidad: detalle.cantidad,
-              observacion: `Reversión automática por eliminación de cuenta #${existing.id_cuenta}`,
-            },
-          });
-        }
+        await tx.movimientoInventario.create({
+          data: {
+            id_producto: detalle.id_producto,
+            tipo_movimiento: "entrada",
+            cantidad: detalle.cantidad,
+            observacion: `Reversión automática por eliminación de cuenta #${existing.id_cuenta}`,
+          },
+        });
       }
     }
 
+    /**
+     * SOFT DELETE DETALLES
+     */
     await tx.detalleCuenta.updateMany({
       where: {
         id_cuenta: id,
@@ -286,13 +313,25 @@ const deleteCuenta = asyncHandler(async (req, res) => {
       },
     });
 
+    /**
+     * LIBERAR MESA
+     */
     await tx.mesa.update({
-      where: { id_mesa: existing.id_mesa },
-      data: { estado: "libre" },
+      where: {
+        id_mesa: existing.id_mesa,
+      },
+      data: {
+        estado: "libre",
+      },
     });
 
+    /**
+     * SOFT DELETE CUENTA
+     */
     return tx.cuenta.update({
-      where: { id_cuenta: id },
+      where: {
+        id_cuenta: id,
+      },
       data: {
         deleted_at: new Date(),
       },

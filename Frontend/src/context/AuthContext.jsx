@@ -1,21 +1,46 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+
 import toast from "react-hot-toast";
-import { getProfileRequest, loginRequest } from "../services/auth.service";
+
+import {
+  getProfileRequest,
+  loginRequest,
+} from "../services/auth.service";
 
 const AuthContext = createContext(null);
 
-export const AuthProvider = ({ children }) => {
+const TOKEN_KEY = "token:v1";
+const USER_KEY = "user:v1";
+
+export const AuthProvider = ({
+  children,
+}) => {
   const [user, setUser] = useState(() => {
     try {
-      const storedUser = localStorage.getItem("user");
-      return storedUser ? JSON.parse(storedUser) : null;
-    } catch (error) {
-      localStorage.removeItem("user");
+      const storedUser =
+        localStorage.getItem(USER_KEY);
+
+      return storedUser
+        ? JSON.parse(storedUser)
+        : null;
+    } catch {
+      localStorage.removeItem(USER_KEY);
       return null;
     }
   });
-  const [token, setToken] = useState(() => localStorage.getItem("token"));
-  const [loading, setLoading] = useState(true);
+
+  const [token, setToken] = useState(() =>
+    localStorage.getItem(TOKEN_KEY)
+  );
+
+  const [loading, setLoading] =
+    useState(true);
 
   useEffect(() => {
     const bootstrap = async () => {
@@ -25,18 +50,46 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const response = await getProfileRequest();
-        const nextUser = response.user || response.data || null;
+        const response =
+          await getProfileRequest();
+
+        console.log(
+          "PROFILE RESPONSE:",
+          response
+        );
+
+        const nextUser =
+          response?.user ||
+          response?.data?.user ||
+          response?.data ||
+          null;
 
         if (!nextUser) {
-          throw new Error("Perfil inválido.");
+          throw new Error(
+            "Perfil inválido."
+          );
         }
 
         setUser(nextUser);
-        localStorage.setItem("user", JSON.stringify(nextUser));
+
+        localStorage.setItem(
+          USER_KEY,
+          JSON.stringify(nextUser)
+        );
       } catch (error) {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
+        console.error(
+          "Error obteniendo perfil:",
+          error
+        );
+
+        localStorage.removeItem(
+          TOKEN_KEY
+        );
+
+        localStorage.removeItem(
+          USER_KEY
+        );
+
         setToken(null);
         setUser(null);
       } finally {
@@ -47,35 +100,73 @@ export const AuthProvider = ({ children }) => {
     bootstrap();
   }, [token]);
 
-  const login = async (credentials) => {
-    const response = await loginRequest(credentials);
-    const authToken = response.token || response.data?.token;
-    const authUser = response.user || response.data?.user || response.data?.usuario;
+  const login = async (
+    credentials
+  ) => {
+    const response =
+      await loginRequest(credentials);
+
+    console.log(
+      "LOGIN RESPONSE:",
+      response
+    );
+
+    const authToken =
+      response?.token ||
+      response?.data?.token;
+
+    const authUser =
+      response?.user ||
+      response?.data?.user ||
+      response?.data?.usuario;
 
     if (!authToken || !authUser) {
-      throw new Error("Respuesta de autenticación inválida.");
+      throw new Error(
+        "Respuesta de autenticación inválida."
+      );
     }
 
-    localStorage.setItem("token", authToken);
-    localStorage.setItem("user", JSON.stringify(authUser));
+    localStorage.setItem(
+      TOKEN_KEY,
+      authToken
+    );
+
+    localStorage.setItem(
+      USER_KEY,
+      JSON.stringify(authUser)
+    );
+
     setToken(authToken);
     setUser(authUser);
-    toast.success(`Bienvenido, ${authUser.nombre}`);
+
+    toast.success(
+      `Bienvenido, ${authUser.nombre}`
+    );
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.removeItem(
+      TOKEN_KEY
+    );
+
+    localStorage.removeItem(
+      USER_KEY
+    );
+
     setToken(null);
     setUser(null);
-    toast.success("Sesión cerrada");
+
+    toast.success(
+      "Sesión cerrada"
+    );
   };
 
   const value = useMemo(
     () => ({
       user,
       token,
-      isAuthenticated: Boolean(token),
+      isAuthenticated:
+        Boolean(token && user),
       loading,
       login,
       logout,
@@ -83,7 +174,16 @@ export const AuthProvider = ({ children }) => {
     [user, token, loading]
   );
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={value}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () =>
+  useContext(AuthContext);
+
+export default AuthContext;
