@@ -18,18 +18,13 @@ const AuthContext = createContext(null);
 const TOKEN_KEY = "token:v1";
 const USER_KEY = "user:v1";
 
-export const AuthProvider = ({
-  children,
-}) => {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     try {
-      const storedUser =
-        localStorage.getItem(USER_KEY);
-
-      return storedUser
-        ? JSON.parse(storedUser)
-        : null;
-    } catch {
+      const storedUser = localStorage.getItem(USER_KEY);
+      return storedUser ? JSON.parse(storedUser) : null;
+    } catch (error) {
+      console.error(error);
       localStorage.removeItem(USER_KEY);
       return null;
     }
@@ -39,8 +34,7 @@ export const AuthProvider = ({
     localStorage.getItem(TOKEN_KEY)
   );
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const bootstrap = async () => {
@@ -50,13 +44,7 @@ export const AuthProvider = ({
       }
 
       try {
-        const response =
-          await getProfileRequest();
-
-        console.log(
-          "PROFILE RESPONSE:",
-          response
-        );
+        const response = await getProfileRequest();
 
         const nextUser =
           response?.user ||
@@ -64,34 +52,31 @@ export const AuthProvider = ({
           response?.data ||
           null;
 
-        if (!nextUser) {
-          throw new Error(
-            "Perfil inválido."
+        if (nextUser) {
+          setUser(nextUser);
+
+          localStorage.setItem(
+            USER_KEY,
+            JSON.stringify(nextUser)
           );
         }
-
-        setUser(nextUser);
-
-        localStorage.setItem(
-          USER_KEY,
-          JSON.stringify(nextUser)
-        );
       } catch (error) {
         console.error(
           "Error obteniendo perfil:",
-          error
+          error.response?.status,
+          error.response?.data
         );
 
-        localStorage.removeItem(
-          TOKEN_KEY
-        );
+        if (
+          error?.response?.status === 401 ||
+          error?.response?.status === 403
+        ) {
+          localStorage.removeItem(TOKEN_KEY);
+          localStorage.removeItem(USER_KEY);
 
-        localStorage.removeItem(
-          USER_KEY
-        );
-
-        setToken(null);
-        setUser(null);
+          setToken(null);
+          setUser(null);
+        }
       } finally {
         setLoading(false);
       }
@@ -100,16 +85,8 @@ export const AuthProvider = ({
     bootstrap();
   }, [token]);
 
-  const login = async (
-    credentials
-  ) => {
-    const response =
-      await loginRequest(credentials);
-
-    console.log(
-      "LOGIN RESPONSE:",
-      response
-    );
+  const login = async (credentials) => {
+    const response = await loginRequest(credentials);
 
     const authToken =
       response?.token ||
@@ -145,28 +122,20 @@ export const AuthProvider = ({
   };
 
   const logout = () => {
-    localStorage.removeItem(
-      TOKEN_KEY
-    );
-
-    localStorage.removeItem(
-      USER_KEY
-    );
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
 
     setToken(null);
     setUser(null);
 
-    toast.success(
-      "Sesión cerrada"
-    );
+    toast.success("Sesión cerrada");
   };
 
   const value = useMemo(
     () => ({
       user,
       token,
-      isAuthenticated:
-        Boolean(token && user),
+      isAuthenticated: Boolean(token && user),
       loading,
       login,
       logout,
@@ -175,9 +144,7 @@ export const AuthProvider = ({
   );
 
   return (
-    <AuthContext.Provider
-      value={value}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
