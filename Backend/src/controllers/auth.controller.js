@@ -7,9 +7,9 @@ const { sanitizeUsuario } = require("../utils/sanitize");
 
 const login = asyncHandler(async (req, res) => {
   const { usuario } = req.body;
-  const contrasena = req.body.contrasena || req.body["contraseña"];
+  const contraseña = req.body.contraseña || req.body["contraseña"];
 
-  if (!usuario || !contrasena) {
+  if (!usuario || !contraseña) {
     throw new AppError("Usuario y contraseña son obligatorios.", 400);
   }
 
@@ -30,20 +30,20 @@ const login = asyncHandler(async (req, res) => {
 
   let isMatch = false;
 
-  if (existingUser.contrasena?.startsWith("$2")) {
-    isMatch = await bcrypt.compare(contrasena, existingUser.contrasena);
+  if (existingUser.contraseña?.startsWith("$2")) {
+    isMatch = await bcrypt.compare(contraseña, existingUser.contraseña);
   } else {
-    isMatch = existingUser.contrasena === contrasena;
+    isMatch = existingUser.contraseña === contraseña;
 
     if (isMatch) {
-      const hashedPassword = await bcrypt.hash(contrasena, 10);
+      const hashedPassword = await bcrypt.hash(contraseña, 10);
 
       await prisma.usuario.update({
         where: { id_usuario: existingUser.id_usuario },
-        data: { contrasena: hashedPassword },
+        data: { contraseña: hashedPassword },
       });
 
-      existingUser.contrasena = hashedPassword;
+      existingUser.contraseña = hashedPassword;
     }
   }
 

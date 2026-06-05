@@ -21,7 +21,7 @@ const ensureDefaultAdmin = async (prisma) => {
       data: {
         nombre: "Administrador General",
         usuario: username,
-        contrasena: hashedPassword,
+        contraseña: hashedPassword,
         rol: "admin",
         estado: true,
       },
@@ -30,13 +30,13 @@ const ensureDefaultAdmin = async (prisma) => {
     return;
   }
 
-  if (!existingAdmin.contrasena?.startsWith("$2")) {
-    const hashedPassword = await bcrypt.hash(existingAdmin.contrasena || password, 10);
+  if (!existingAdmin.contraseña?.startsWith("$2")) {
+    const hashedPassword = await bcrypt.hash(existingAdmin.contraseña || password, 10);
 
     await prisma.usuario.update({
       where: { id_usuario: existingAdmin.id_usuario },
       data: {
-        contrasena: hashedPassword,
+        contraseña: hashedPassword,
         estado: true,
       },
     });

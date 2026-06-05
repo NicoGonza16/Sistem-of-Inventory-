@@ -3,7 +3,7 @@ const sanitizeUsuario = (usuario) => {
     return usuario;
   }
 
-  const { contrasena, ...safeUsuario } = usuario;
+  const { contraseña, ...safeUsuario } = usuario;
   return safeUsuario;
 };
 

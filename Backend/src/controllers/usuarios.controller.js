@@ -30,9 +30,9 @@ const getUsuarioById = asyncHandler(async (req, res) => {
 });
 
 const createUsuario = asyncHandler(async (req, res) => {
-  const { nombre, usuario, contrasena, rol = "empleado", estado = true } = req.body;
+  const { nombre, usuario, contraseña, rol = "empleado", estado = true } = req.body;
 
-  if (!nombre || !usuario || !contrasena) {
+  if (!nombre || !usuario || !contraseña) {
     throw new AppError("Nombre, usuario y contraseña son obligatorios.", 400);
   }
 
@@ -44,13 +44,13 @@ const createUsuario = asyncHandler(async (req, res) => {
     throw new AppError("El nombre de usuario ya existe.", 409);
   }
 
-  const hashedPassword = await bcrypt.hash(contrasena, 10);
+  const hashedPassword = await bcrypt.hash(contraseña, 10);
 
   const newUser = await prisma.usuario.create({
     data: {
       nombre,
       usuario,
-      contrasena: hashedPassword,
+      contraseña: hashedPassword,
       rol,
       estado,
     },
@@ -61,7 +61,7 @@ const createUsuario = asyncHandler(async (req, res) => {
 
 const updateUsuario = asyncHandler(async (req, res) => {
   const id = Number(req.params.id);
-  const { nombre, usuario, contrasena, rol, estado } = req.body;
+  const { nombre, usuario, contraseña, rol, estado } = req.body;
 
   const existingUser = await prisma.usuario.findFirst({
     where: {
@@ -93,7 +93,7 @@ const updateUsuario = asyncHandler(async (req, res) => {
     data: {
       nombre: nombre ?? existingUser.nombre,
       usuario: usuario ?? existingUser.usuario,
-      contrasena: contrasena ? await bcrypt.hash(contrasena, 10) : existingUser.contrasena,
+      contraseña: contraseña ? await bcrypt.hash(contraseña, 10) : existingUser.contraseña,
       rol: rol ?? existingUser.rol,
       estado: typeof estado === "boolean" ? estado : existingUser.estado,
     },

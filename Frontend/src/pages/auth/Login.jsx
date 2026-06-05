@@ -28,7 +28,7 @@ function Login() {
 
   const [form, setForm] = useState({
     usuario: "",
-    contrasena: "",
+    contraseña: "",
   });
 
   const [errors, setErrors] = useState(
@@ -59,8 +59,8 @@ function Login() {
         "Ingresa tu usuario.";
     }
 
-    if (!form.contrasena.trim()) {
-      nextErrors.contrasena =
+    if (!form.contraseña.trim()) {
+      nextErrors.contraseña =
         "Ingresa tu contraseña.";
     }
 
@@ -84,8 +84,8 @@ function Login() {
 
       await login({
         usuario: form.usuario.trim(),
-        contrasena: form.contrasena,
-        contraseña: form.contrasena,
+        contraseña: form.contraseña,
+        contraseña: form.contraseña,
       });
 
       navigate(
@@ -166,12 +166,12 @@ function Login() {
               type="password"
               placeholder="••••"
               icon={FiLock}
-              value={form.contrasena}
-              error={errors.contrasena}
+              value={form.contraseña}
+              error={errors.contraseña}
               onChange={(event) =>
                 setForm((current) => ({
                   ...current,
-                  contrasena:
+                  contraseña:
                     event.target.value,
                 }))
               }

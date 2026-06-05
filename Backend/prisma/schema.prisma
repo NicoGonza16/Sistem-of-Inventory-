@@ -31,7 +31,7 @@ model Usuario {
   id_usuario  Int        @id @default(autoincrement())
   nombre      String     @db.VarChar(120)
   usuario     String     @unique @db.VarChar(80)
-  contrasena  String     @map("contraseña") @db.VarChar(255)
+  contraseña  String     @map("contraseña") @db.VarChar(255)
   rol         RolUsuario @default(empleado)
   estado      Boolean    @default(true)
   created_at  DateTime   @default(now())
