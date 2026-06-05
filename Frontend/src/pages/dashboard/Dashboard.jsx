@@ -38,25 +38,39 @@ function Dashboard() {
     useState();
 
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        const [
-          dashboardData,
-          reportesData,
-        ] = await Promise.all([
-          getDashboardMetrics(),
-          getReportes(),
-        ]);
+  let mounted = true;
 
-        setMetrics(dashboardData);
+  const loadData = async () => {
+    try {
+      const [
+        dashboardData,
+        reportesData,
+      ] = await Promise.all([
+        getDashboardMetrics(),
+        getReportes(),
+      ]);
 
-        setReportes(reportesData);
-      } finally {
+      if (!mounted) return;
+
+      setMetrics(dashboardData);
+      setReportes(reportesData);
+    } catch (error) {
+      console.error(
+        "Error cargando dashboard:",
+        error
+      );
+    } finally {
+      if (mounted) {
         setLoading(false);
       }
-    };
+    }
+  };
 
-    loadData();
+  loadData();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   if (

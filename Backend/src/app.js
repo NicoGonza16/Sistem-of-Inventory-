@@ -5,6 +5,7 @@ const cors = require("cors");
 const path = require("path");
 const authRoutes = require("./routes/auth.routes");
 const usuariosRoutes = require("./routes/usuarios.routes");
+const dashboardRoutes = require("./routes/dashboard.routes");
 const categoriasRoutes = require("./routes/categorias.routes");
 const productosRoutes = require("./routes/productos.routes");
 const movimientosRoutes = require("./routes/movimientos.routes");
@@ -12,6 +13,7 @@ const mesasRoutes = require("./routes/mesas.routes");
 const cuentasRoutes = require("./routes/cuentas.routes");
 const detalleCuentaRoutes = require("./routes/detalleCuenta.routes");
 const errorMiddleware = require("./middlewares/error.middleware");
+
 
 const app = express();
 
@@ -33,6 +35,7 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/usuarios", usuariosRoutes);
 app.use("/api/categorias", categoriasRoutes);
