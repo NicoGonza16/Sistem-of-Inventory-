@@ -7,16 +7,9 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js"
   },
-  "keywords": [
-    "node",
-    "express",
-    "postgresql",
-    "prisma",
-    "inventory"
-  ],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "@prisma/client": "^6.16.2",
     "bcrypt": "^6.0.0",
