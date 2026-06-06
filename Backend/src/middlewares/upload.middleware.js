@@ -1,29 +1,6 @@
-const fs = require("fs");
-const path = require("path");
 const multer = require("multer");
 
-const productUploadsDir = path.join(process.cwd(), "uploads", "productos");
-
-fs.mkdirSync(productUploadsDir, { recursive: true });
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-  console.log("DESTINO:", productUploadsDir);
-  cb(null, productUploadsDir);
- },
-  filename: (req, file, cb) => {
-  console.log("ARCHIVO RECIBIDO:", file.originalname);
-
-  const ext = path.extname(file.originalname || "").toLowerCase() || ".png";
-
-  const safeBase = path
-    .basename(file.originalname || "imagen", ext)
-    .replace(/[^a-zA-Z0-9-_]/g, "-")
-    .slice(0, 50);
-
-  cb(null, `${Date.now()}-${safeBase}${ext}`);
-},
-  });
+const storage = multer.memoryStorage();
 
 const imageFileFilter = (req, file, cb) => {
   if (!file.mimetype.startsWith("image/")) {
@@ -44,5 +21,4 @@ const productImageUpload = multer({
 
 module.exports = {
   productImageUpload,
-  productUploadsDir,
 };
