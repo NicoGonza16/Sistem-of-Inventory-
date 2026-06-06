@@ -4,6 +4,8 @@ const prisma = require("../config/database");
 const AppError = require("../utils/appError");
 const asyncHandler = require("../utils/asyncHandler");
 const { sendResponse } = require("../utils/response");
+const streamifier = require("streamifier");
+const cloudinary = require("../config/cloudinary");
 
 const fileUrlFromName = (filename) =>
   `/uploads/productos/${filename}`;
@@ -41,13 +43,6 @@ const getProductoImagenes = asyncHandler(async (req, res) => {
 });
 
 const uploadProductoImagenes = asyncHandler(async (req, res) => {
-  console.log("=================================");
-  console.log("===== SUBIDA DE IMAGEN =====");
-  console.log("PARAMS:", req.params);
-  console.log("BODY:", req.body);
-  console.log("FILES:", req.files);
-  console.log("=================================");
-
   const idProducto = Number(req.params.id);
   const files = req.files || [];
 
@@ -57,22 +52,6 @@ const uploadProductoImagenes = asyncHandler(async (req, res) => {
       400
     );
   }
-
-  console.log("CANTIDAD DE ARCHIVOS:", files.length);
-
-  files.forEach((file, index) => {
-    console.log(`ARCHIVO ${index + 1}:`);
-    console.log({
-      fieldname: file.fieldname,
-      originalname: file.originalname,
-      encoding: file.encoding,
-      mimetype: file.mimetype,
-      destination: file.destination,
-      filename: file.filename,
-      path: file.path,
-      size: file.size,
-    });
-  });
 
   const producto = await prisma.producto.findFirst({
     where: {
@@ -88,32 +67,47 @@ const uploadProductoImagenes = asyncHandler(async (req, res) => {
     );
   }
 
-  const createdImages = await prisma.$transaction(
-    files.map((file) => {
-      console.log(
-        "GUARDANDO EN BD:",
-        file.filename
-      );
+  const uploadedImages = [];
 
-      return prisma.productoImagen.create({
-        data: {
-          id_producto: idProducto,
-          url_imagen: fileUrlFromName(
-            file.filename
-          ),
-        },
-      });
-    })
-  );
+  for (const file of files) {
+    const result = await new Promise(
+      (resolve, reject) => {
+        const uploadStream =
+          cloudinary.uploader.upload_stream(
+            {
+              folder: "productos",
+              resource_type: "image",
+            },
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(result);
+              }
+            }
+          );
 
-  console.log("IMAGENES GUARDADAS:");
-  console.log(createdImages);
+        streamifier
+          .createReadStream(file.buffer)
+          .pipe(uploadStream);
+      }
+    );
+
+    const image = await prisma.productoImagen.create({
+      data: {
+        id_producto: idProducto,
+        url_imagen: result.secure_url,
+      },
+    });
+
+    uploadedImages.push(image);
+  }
 
   sendResponse(
     res,
     201,
     "Imágenes subidas correctamente.",
-    createdImages
+    uploadedImages
   );
 });
 
