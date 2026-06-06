@@ -35,37 +35,43 @@ const getProductoImagenes = asyncHandler(async (req, res) => {
 });
 
 const uploadProductoImagenes = asyncHandler(async (req, res) => {
+  console.log("===== SUBIDA DE IMAGEN =====");
+  console.log("PARAMS:", req.params);
+  console.log("BODY:", req.body);
+  console.log("FILES:", req.files);
+
   const idProducto = Number(req.params.id);
   const files = req.files || [];
 
-  if (!files.length) {
-    throw new AppError("Debes seleccionar al menos una imagen.", 400);
-  }
+    if (!files.length) {
+      throw new AppError("Debes seleccionar al menos una imagen.", 400);
+    }
 
-  const producto = await prisma.producto.findFirst({
-    where: {
-      id_producto: idProducto,
-      deleted_at: null,
-    },
+    const producto = await prisma.producto.findFirst({
+      where: {
+        id_producto: idProducto,
+        deleted_at: null,
+      },
+    });
+
+    if (!producto) {
+      throw new AppError("Producto no encontrado.", 404);
+    }
+
+    const createdImages = await prisma.$transaction(
+      files.map((file) =>
+        prisma.productoImagen.create({
+          data: {
+            id_producto: idProducto,
+            url_imagen: fileUrlFromName(file.filename),
+          },
+        })
+      )
+    );
+
+    sendResponse(res, 201, "Imágenes subidas correctamente.", createdImages);
   });
 
-  if (!producto) {
-    throw new AppError("Producto no encontrado.", 404);
-  }
-
-  const createdImages = await prisma.$transaction(
-    files.map((file) =>
-      prisma.productoImagen.create({
-        data: {
-          id_producto: idProducto,
-          url_imagen: fileUrlFromName(file.filename),
-        },
-      })
-    )
-  );
-
-  sendResponse(res, 201, "Imágenes subidas correctamente.", createdImages);
-});
 
 const updateProductoImagen = asyncHandler(async (req, res) => {
   const idImagen = Number(req.params.imageId);
