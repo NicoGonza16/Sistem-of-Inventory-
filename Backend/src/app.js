@@ -26,8 +26,17 @@ app.use(cors({
 app.use(express.json());
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
-app.get("/test-upload", (req, res) => {
-  res.send(path.join(process.cwd(), "uploads"));
+app.get("/test-image", (req, res) => {
+  const path = require("path");
+
+  res.sendFile(
+    path.join(
+      process.cwd(),
+      "uploads",
+      "productos",
+      "1780093632292-Agua-Cristal-sin-gas-600-ML-1.jpg"
+    )
+  );
 });
 
 const fs = require("fs");
