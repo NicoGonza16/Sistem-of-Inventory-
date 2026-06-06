@@ -34,7 +34,7 @@ app.get("/test-image", (req, res) => {
       process.cwd(),
       "uploads",
       "productos",
-      "1780093632292-Agua-Cristal-sin-gas-600-ML-1.jpg"
+      "1780696095723-Agua-Cristal-sin-gas-600-ML-1.jpg"
     )
   );
 });
