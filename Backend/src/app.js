@@ -24,6 +24,26 @@ app.use(cors({
   credentials: true
 }));
 
+const fs = require("fs");
+
+console.log(
+  "EXISTE UPLOADS:",
+  fs.existsSync(
+    path.join(process.cwd(), "uploads")
+  )
+);
+
+console.log(
+  "CONTENIDO UPLOADS:",
+  fs.existsSync(
+    path.join(process.cwd(), "uploads")
+  )
+    ? fs.readdirSync(
+        path.join(process.cwd(), "uploads")
+      )
+    : "NO EXISTE"
+);
+
 app.use(express.json());
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
