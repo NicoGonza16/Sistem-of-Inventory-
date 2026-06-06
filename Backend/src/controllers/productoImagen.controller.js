@@ -1,19 +1,9 @@
-const fs = require("fs/promises");
-const path = require("path");
 const prisma = require("../config/database");
 const AppError = require("../utils/appError");
 const asyncHandler = require("../utils/asyncHandler");
 const { sendResponse } = require("../utils/response");
 const streamifier = require("streamifier");
 const cloudinary = require("../config/cloudinary");
-
-const fileUrlFromName = (filename) =>
-  `/uploads/productos/${filename}`;
-
-const absolutePathFromUrl = (urlImagen) => {
-  const normalized = urlImagen.replace(/^\/+/, "");
-  return path.join(process.cwd(), normalized);
-};
 
 const getProductoImagenes = asyncHandler(async (req, res) => {
   const idProducto = Number(req.params.id);
@@ -25,7 +15,9 @@ const getProductoImagenes = asyncHandler(async (req, res) => {
     },
     include: {
       imagenes: {
-        orderBy: { created_at: "desc" },
+        orderBy: {
+          created_at: "desc",
+        },
       },
     },
   });
@@ -43,6 +35,13 @@ const getProductoImagenes = asyncHandler(async (req, res) => {
 });
 
 const uploadProductoImagenes = asyncHandler(async (req, res) => {
+  console.log("=================================");
+  console.log("===== SUBIDA DE IMAGEN =====");
+  console.log("PARAMS:", req.params);
+  console.log("BODY:", req.body);
+  console.log("FILES:", req.files);
+  console.log("=================================");
+
   const idProducto = Number(req.params.id);
   const files = req.files || [];
 
@@ -70,37 +69,71 @@ const uploadProductoImagenes = asyncHandler(async (req, res) => {
   const uploadedImages = [];
 
   for (const file of files) {
-    const result = await new Promise(
-      (resolve, reject) => {
-        const uploadStream =
-          cloudinary.uploader.upload_stream(
-            {
-              folder: "productos",
-              resource_type: "image",
-            },
-            (error, result) => {
-              if (error) {
-                reject(error);
-              } else {
+    try {
+      console.log("SUBIENDO ARCHIVO:");
+      console.log(file.originalname);
+      console.log(file.mimetype);
+      console.log(file.size);
+
+      const result = await new Promise(
+        (resolve, reject) => {
+          const uploadStream =
+            cloudinary.uploader.upload_stream(
+              {
+                folder: "productos",
+                resource_type: "image",
+              },
+              (error, result) => {
+                if (error) {
+                  console.error(
+                    "ERROR CLOUDINARY:"
+                  );
+                  console.error(error);
+
+                  return reject(error);
+                }
+
+                console.log(
+                  "RESPUESTA CLOUDINARY:"
+                );
+                console.log(result);
+
                 resolve(result);
               }
-            }
-          );
+            );
 
-        streamifier
-          .createReadStream(file.buffer)
-          .pipe(uploadStream);
-      }
-    );
+          streamifier
+            .createReadStream(file.buffer)
+            .pipe(uploadStream);
+        }
+      );
 
-    const image = await prisma.productoImagen.create({
-      data: {
-        id_producto: idProducto,
-        url_imagen: result.secure_url,
-      },
-    });
+      console.log(
+        "URL CLOUDINARY:",
+        result.secure_url
+      );
 
-    uploadedImages.push(image);
+      const image =
+        await prisma.productoImagen.create({
+          data: {
+            id_producto: idProducto,
+            url_imagen: result.secure_url,
+          },
+        });
+
+      uploadedImages.push(image);
+    } catch (error) {
+      console.error(
+        "ERROR COMPLETO SUBIENDO IMAGEN:"
+      );
+      console.error(error);
+
+      throw new AppError(
+        error.message ||
+          "Error subiendo imagen a Cloudinary.",
+        500
+      );
+    }
   }
 
   sendResponse(
@@ -114,9 +147,6 @@ const uploadProductoImagenes = asyncHandler(async (req, res) => {
 const updateProductoImagen = asyncHandler(async (req, res) => {
   const idImagen = Number(req.params.imageId);
   const file = req.file;
-
-  console.log("===== ACTUALIZAR IMAGEN =====");
-  console.log("FILE:", file);
 
   if (!file) {
     throw new AppError(
@@ -139,32 +169,58 @@ const updateProductoImagen = asyncHandler(async (req, res) => {
     );
   }
 
-  const updatedImage =
-    await prisma.productoImagen.update({
-      where: {
-        id_imagen: idImagen,
-      },
-      data: {
-        url_imagen: fileUrlFromName(
-          file.filename
-        ),
-      },
-    });
+  try {
+    const result = await new Promise(
+      (resolve, reject) => {
+        const uploadStream =
+          cloudinary.uploader.upload_stream(
+            {
+              folder: "productos",
+              resource_type: "image",
+            },
+            (error, result) => {
+              if (error) {
+                return reject(error);
+              }
 
-  await fs
-    .unlink(
-      absolutePathFromUrl(
-        existingImage.url_imagen
-      )
-    )
-    .catch(() => null);
+              resolve(result);
+            }
+          );
 
-  sendResponse(
-    res,
-    200,
-    "Imagen actualizada correctamente.",
-    updatedImage
-  );
+        streamifier
+          .createReadStream(file.buffer)
+          .pipe(uploadStream);
+      }
+    );
+
+    const updatedImage =
+      await prisma.productoImagen.update({
+        where: {
+          id_imagen: idImagen,
+        },
+        data: {
+          url_imagen: result.secure_url,
+        },
+      });
+
+    sendResponse(
+      res,
+      200,
+      "Imagen actualizada correctamente.",
+      updatedImage
+    );
+  } catch (error) {
+    console.error(
+      "ERROR ACTUALIZANDO IMAGEN:"
+    );
+    console.error(error);
+
+    throw new AppError(
+      error.message ||
+        "Error actualizando imagen.",
+      500
+    );
+  }
 });
 
 const deleteProductoImagen = asyncHandler(async (req, res) => {
@@ -189,14 +245,6 @@ const deleteProductoImagen = asyncHandler(async (req, res) => {
       id_imagen: idImagen,
     },
   });
-
-  await fs
-    .unlink(
-      absolutePathFromUrl(
-        existingImage.url_imagen
-      )
-    )
-    .catch(() => null);
 
   sendResponse(
     res,
