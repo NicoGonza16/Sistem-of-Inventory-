@@ -33,7 +33,7 @@ function ProductosTable({
                 <img
                   src={
                     row.imagenes?.[0]?.url_imagen
-                      ? `http://localhost:3001${row.imagenes[0].url_imagen}`
+                      ? row.imagenes[0].url_imagen
                       : placeholderImage
                   }
                   alt={row.nombre}
@@ -107,7 +107,7 @@ function ProductosTable({
                   onClick={() =>
                     setPreviewImage(
                       row.imagenes?.[0]?.url_imagen
-                        ? `http://localhost:3001${row.imagenes[0].url_imagen}`
+                        ? row.imagenes[0].url_imagen
                         : placeholderImage
                     )
                   }
