@@ -11,10 +11,6 @@ function ProductoImagenGallery({
     "http://localhost:3001/api"
   ).replace("/api", "");
 
-  console.log("API_BASE:", API_BASE);
-  console.log("URL GUARDADA:", image?.url_imagen);
-  console.log("URL FINAL:", imageSrc);
-
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {images.length > 0 ? (
@@ -26,15 +22,9 @@ function ProductoImagenGallery({
                 : `${API_BASE}${image.url_imagen}`
               : image?.preview || placeholderImage;
 
-          console.log(
-            "Imagen:",
-            image
-          );
-
-          console.log(
-            "URL generada:",
-            imageSrc
-          );
+          console.log("Imagen:", image);
+          console.log("URL guardada:", image?.url_imagen);
+          console.log("URL final:", imageSrc);
 
           return (
             <div
