@@ -27,9 +27,15 @@ npm install
 
 ```env
 PORT=3001
-JWT_SECRET=supersecretkey
-DATABASE_URL=postgresql://postgres:1234@localhost:5432/bar_inventory
+JWT_SECRET=<un-secreto-largo-y-aleatorio>
+DATABASE_URL=postgresql://<usuario>:<clave>@localhost:5432/bar_inventory
+# Administrador inicial (opcional). Si no se definen, no se crea ningún admin.
+# La contraseña debe tener al menos 8 caracteres.
+ADMIN_USER=<usuario-admin>
+ADMIN_PASSWORD=<contraseña-segura>
 ```
+
+> No subas el archivo `.env` al repositorio.
 
 ## Prisma y migraciones
 
